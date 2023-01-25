@@ -23,6 +23,7 @@ import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [books, setBooks] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -38,9 +39,10 @@ const App = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
-      data.results.forEach(result => {
-        console.log('Book Data', result.book_details[0].title)
-      })
+      setBooks(data.results)
+      // data.results.forEach(result => {
+      //   console.log('Book Data', result.book_details[0].title)
+      // })
     }
     if (user) fetchAllBooks()
   }, [user])
@@ -78,7 +80,7 @@ const App = () => {
           path="/books"
           element={
             <ProtectedRoute user={user}>
-              <BookList />
+              <BookList books={books}/>
             </ProtectedRoute>
           }
         />
