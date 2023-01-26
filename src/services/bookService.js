@@ -13,9 +13,9 @@ const index = async () => {
   }
 }
 
-const show = async (id) => {
+const show = async (isbn) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/${isbn}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()

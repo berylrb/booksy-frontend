@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BookList from './pages/BookList/BookList'
+import BookDetails from './pages/BookDetails/BookDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -81,6 +82,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <BookList books={books}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/books/:isbn"
+          element={
+            <ProtectedRoute user={user}>
+              <BookDetails user={user}/>
             </ProtectedRoute>
           }
         />

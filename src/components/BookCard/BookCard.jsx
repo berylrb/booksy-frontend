@@ -7,10 +7,10 @@ import styles from './BookCard.module.css'
 
 const BookCard = ({ book }) => {
   const bookTitle = book.book_details[0].title
-  const bookId = book.book_details[0].primary_isbn13
-  console.log(bookId)
+  const isbn = book.book_details[0].primary_isbn13
+  console.log(isbn)
   return (
-    <Link to={`/books/${book._id}`}>
+    <Link to={`/books/${isbn}`}>
       <article className={styles.container}>
         <header>
           <span>
