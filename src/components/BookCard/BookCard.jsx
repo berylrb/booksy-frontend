@@ -8,7 +8,7 @@ import styles from './BookCard.module.css'
 const BookCard = ({ book }) => {
   const bookTitle = book.title
   const qKey = book.key.split('s/')[1]
-  console.log(qKey)
+  // console.log(qKey)
   return (
     <Link to={`/books/${qKey}`}>
       <article className={styles.container}>

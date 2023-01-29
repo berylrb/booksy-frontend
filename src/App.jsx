@@ -87,7 +87,7 @@ const App = () => {
           }
         />
         <Route
-          path="/books/:isbn"
+          path="/books/:qKey"
           element={
             <ProtectedRoute user={user}>
               <BookDetails user={user}/>
