@@ -7,7 +7,7 @@ const BookList = (props) => {
     <>
       <main className={styles.container}>
         {props.books.map((book, idx) => (
-          <BookCard key={book.book_details[0].primary_isbn13} book={book} />
+          <BookCard key={book.key.split('s/')[1]} book={book} />
         ))}
       </main>
     </>

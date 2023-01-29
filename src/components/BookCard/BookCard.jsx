@@ -6,18 +6,19 @@ import styles from './BookCard.module.css'
 // import AuthorInfo from "../AuthorInfo/AuthorInfo"
 
 const BookCard = ({ book }) => {
-  const bookTitle = book.book_details[0].title
-  const isbn = book.book_details[0].primary_isbn13
-  console.log(isbn)
+  const bookTitle = book.title
+  const qKey = book.key.split('s/')[1]
+  console.log(qKey)
   return (
-    <Link to={`/books/${isbn}`}>
+    <Link to={`/books/${qKey}`}>
       <article className={styles.container}>
         <header>
           <span>
             <h1>{bookTitle}</h1>
           </span>
         </header>
-        <p>{book.book_details[0].description}</p>
+        <p>{book.first_publish_year}</p>
+        {/* <p>{book.book_details[0].description}</p> */}
       </article>
     </Link>
   )

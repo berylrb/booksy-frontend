@@ -40,7 +40,8 @@ const App = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
-      setBooks(data.results)
+      console.log(data.works)
+      setBooks(data.works)
       // data.results.forEach(result => {
       //   console.log('Book Data', result.book_details[0].title)
       // })
