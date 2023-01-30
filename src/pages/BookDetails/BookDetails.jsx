@@ -10,24 +10,35 @@ import * as bookService from '../../services/bookService'
 const BookDetails = (props) => {
   const { qKey } = useParams()
   const [book, setBook] = useState(null)
- 
-
+  console.log(book)
+  
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
       setBook(data)
+      console.log(data.entries[0])
     }
     fetchBook()
   }, [qKey])
-
+  
   // console.log('Book State:', book)
 
   if (!book) return <Loading />
 
   return (
-    <main>
-      Details
-    </main>
+    <>
+      <main>
+        <div className={styles.detailsContainer}>
+          <header>
+            {/* <img src={`https://covers.openlibrary.org/b/olid/${book.key.split('s/')[1]}-M.jpg`} alt="book cover" /> */}
+            <span>
+              <h1>{book.title}</h1>
+            </span>
+          </header>
+          {/* <p>{book.book_details[0].description}</p> */}
+        </div>
+      </main>
+    </>
   )
 }
 
