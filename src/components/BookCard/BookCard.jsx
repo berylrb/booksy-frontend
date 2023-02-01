@@ -7,19 +7,21 @@ import styles from './BookCard.module.css'
 
 const BookCard = ({ book }) => {
   const bookTitle = book.title
+  const authorName = book.author_name
   const qKey = book.key.split('s/')[1]
   const imgKey = book.lending_edition_s ? book.lending_edition_s : book.cover_edition_key
   const imgLink = `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg`
   // console.log(imgLink)
   // console.log(qKey)
   return (
-    <Link to={`/books/${qKey}`}>
+    <Link to={`/books/${qKey}`} state={{ imgKey, imgLink, authorName }}>
       <article className={styles.container}>
         <header>
           <img src={imgLink} alt="book cover" />
           <span>
             <h1>{bookTitle}</h1>
           </span>
+          <h4>{authorName}</h4>
         </header>
         {/* <p>{book.first_publish_year}</p> */}
         {/* <p>{book.book_details[0].description}</p> */}
