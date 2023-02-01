@@ -9,24 +9,31 @@ import * as bookService from '../../services/bookService'
 import * as profileService from '../../services/profileService'
 
 const BookDetails = ({ user }) => {
-  const { qKey } = useParams()
+  //initialize navigate, location
   const navigate = useNavigate()
+  const location = useLocation()
+
+  //state variables
   const [bookDetails, setBookDetails] = useState(null)
   const [savedBook, setSavedBook] = useState()
-  console.log(bookDetails)
-  const location = useLocation()
+
+  //location & params variables
   const { imgKey } = location.state
   const { imgLink } = location.state
   const { authorName } = location.state
+  const { qKey } = useParams()
+
+
   const bookDesc = bookDetails?.description?.value
 
-  console.log(typeof authorName[0], authorName)
 
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
+      const res = await bookService.findReviewsByKey(qKey)
+      setSavedBook(res)
+      console.log('res', res)
       setBookDetails(data)
-      console.log(data)
     }
     fetchBook()
   }, [qKey])
@@ -34,24 +41,21 @@ const BookDetails = ({ user }) => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
-    console.log('user', user.profile, bookDetails)
-
     const formData = {
       ...bookDetails,
       author: authorName[0],
       imgUrl: imgLink
     }
-
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
-    console.log('book', book)
   }
+  // console.log('saved', user.savedBooks)
 
   const buttonSubmit = async (evt) => {
     navigate('/books')
   }
 
-  console.log(typeof bookDesc)
+
   if (!bookDetails) return <Loading />
 
   return (
@@ -59,24 +63,22 @@ const BookDetails = ({ user }) => {
       <main>
         <div className={styles.detailsContainer}>
           <header>
-            {/* <img src={`https://covers.openlibrary.org/b/olid/${book.key.split('s/')[1]}-M.jpg`} alt="book cover" /> */}
             <span>
               <h1>{bookDetails.title}</h1>
             </span>
             <p>by {authorName[0]}</p>
-            <img src={ imgLink } alt="book cover" />
+            <img src={imgLink} alt="book cover" />
           </header>
           <p>{bookDesc}</p>
-          {/* <p>{book.book_details[0].description}</p> */}
         </div>
-        <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+        {/* <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button> */}
         {savedBook >= 0 ?
           <>
-          <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+            <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
           </>
           :
           <>
-          <p>This book is already in your bookshelf.</p>
+            <p>This book is already in your bookshelf.</p>
           </>
         }
         <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>

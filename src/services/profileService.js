@@ -2,14 +2,14 @@ import * as tokenService from './tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/profiles`
 
-async function getAllProfiles() {
+const getAllProfiles = async () => {
   const res = await fetch(BASE_URL, {
     headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
   })
   return await res.json()
 }
 
-async function addPhoto(photoData, profileId) {
+const addPhoto = async (photoData, profileId) => {
   const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
     method: 'PUT',
     headers: {
@@ -20,7 +20,7 @@ async function addPhoto(photoData, profileId) {
   return await res.json()
 }
 
-async function addBook(profileId, book) {
+const addBook = async (profileId, book) => {
   console.log('this is prof id', profileId)
   const res = await fetch(`${BASE_URL}/${profileId}/books`, {
     method: 'POST',
