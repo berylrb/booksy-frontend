@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import styles from './BookCard.module.css'
+import { useEffect, useState } from "react"
+import * as bookService from '../../services/bookService'
 
 // Components
 // import Icon from "../Icon/Icon"
@@ -11,8 +13,8 @@ const BookCard = ({ book }) => {
   const qKey = book.key.split('s/')[1]
   const imgKey = book.lending_edition_s ? book.lending_edition_s : book.cover_edition_key
   const imgLink = `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg`
-  // console.log(imgLink)
-  // console.log(qKey)
+
+  
   return (
     <Link to={`/books/${qKey}`} state={{ imgKey, imgLink, authorName }}>
       <article className={styles.container}>

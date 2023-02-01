@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useNavigate, useLocation } from "react-router-dom"
 import styles from './BookDetails.module.css'
 import Loading from "../Loading/Loading"
+import BookRating from "../../components/BookRating/BookRating"
 
 // Services
 import * as bookService from '../../services/bookService'
@@ -16,6 +17,7 @@ const BookDetails = ({ user }) => {
   //state variables
   const [bookDetails, setBookDetails] = useState(null)
   const [savedBook, setSavedBook] = useState()
+  const [bookRatings, setBookRatings] = useState(null)
 
   //location & params variables
   const { imgKey } = location.state
@@ -26,7 +28,18 @@ const BookDetails = ({ user }) => {
 
   const bookDesc = bookDetails?.description?.value
 
+//get rating details
+  useEffect(() => {
+    const ratingData = async () => {
+      const res = await bookService.getRatings(qKey)
+      setBookRatings(res)
+    }
+    ratingData()
+  }, [qKey])
+  console.log(bookRatings)
 
+
+//get book details
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
@@ -38,6 +51,7 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
+  console.log(bookDetails)
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -71,6 +85,11 @@ const BookDetails = ({ user }) => {
           </header>
           <p>{bookDesc}</p>
         </div>
+        {bookRatings !== null ?
+        <BookRating ratings={bookRatings} />
+        :
+        <p></p>
+      }
         {/* <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button> */}
         {savedBook >= 0 ?
           <>

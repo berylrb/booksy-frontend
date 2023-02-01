@@ -49,6 +49,9 @@ const App = () => {
     if (user) fetchAllBooks()
   }, [user])
 
+
+  
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />

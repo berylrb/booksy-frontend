@@ -28,7 +28,20 @@ const show = async (qKey) => {
 const findReviewsByKey = async (qKey) => {
   try {
 
-    const res = await fetch(`${BASE_URL}/qKey/reviews`, {
+    const res = await fetch(`${BASE_URL}/${qKey}/reviews`, {
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      }
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const getRatings = async (qKey) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${qKey}/ratings`, {
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
       }
@@ -40,8 +53,9 @@ const findReviewsByKey = async (qKey) => {
 }
 
 
-export { 
+export {
   index,
   show,
-  findReviewsByKey
+  findReviewsByKey,
+  getRatings
 }
