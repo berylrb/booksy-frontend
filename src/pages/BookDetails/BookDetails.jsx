@@ -35,7 +35,14 @@ const BookDetails = ({ user }) => {
   const handleSubmit = async (evt) => {
     evt.preventDefault()
     console.log('user', user.profile, bookDetails)
-    const book = await profileService.addBook(user.profile, bookDetails)
+
+    const formData = {
+      ...bookDetails,
+      author: authorName[0],
+      imgUrl: imgLink
+    }
+
+    const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
     console.log('book', book)
   }
