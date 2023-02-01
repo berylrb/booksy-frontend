@@ -20,4 +20,17 @@ async function addPhoto(photoData, profileId) {
   return await res.json()
 }
 
-export { getAllProfiles, addPhoto }
+async function addBook(profileId, book) {
+  console.log('this is prof id', profileId)
+  const res = await fetch(`${BASE_URL}/${profileId}/books`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(book),
+  })
+  return res.json()
+}
+
+export { getAllProfiles, addPhoto, addBook }
