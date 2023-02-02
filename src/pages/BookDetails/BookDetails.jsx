@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom"
 import styles from './BookDetails.module.css'
 import Loading from "../Loading/Loading"
 import BookRating from "../../components/BookRating/BookRating"
+import NewReview from "../../components/NewReview/NewReview"
 
 // Services
 import * as bookService from '../../services/bookService'
@@ -69,6 +70,11 @@ const BookDetails = ({ user }) => {
     navigate('/books')
   }
 
+  const handleAddReview = async (reviewData) => {
+    const newReview = await bookService.createReview(qKey, reviewData)
+    setBookDetails({...bookDetails, reviews: [...bookDetails.reviews, newReview]})
+  }
+
 
   if (!bookDetails) return <Loading />
 
@@ -100,6 +106,11 @@ const BookDetails = ({ user }) => {
             <p>This book is already in your bookshelf.</p>
           </>
         }
+
+        <section className={styles.reviewSection}>
+          <h2>Reviews</h2>
+          <NewReview handleAddReview={handleAddReview} />
+        </section>
         <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>
     </>
