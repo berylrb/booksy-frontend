@@ -5,6 +5,7 @@ import styles from './BookDetails.module.css'
 import Loading from "../Loading/Loading"
 import BookRating from "../../components/BookRating/BookRating"
 import NewReview from "../../components/NewReview/NewReview"
+import Reviews from "../../components/Reviews/Reviews"
 
 // Services
 import * as bookService from '../../services/bookService'
@@ -59,7 +60,10 @@ const BookDetails = ({ user }) => {
     const formData = {
       ...bookDetails,
       author: authorName[0],
-      imgUrl: imgLink
+      imgUrl: imgLink,
+      collectedByPerson: [],
+      collectedByGroup: [],
+      reviews: []
     }
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
@@ -71,8 +75,8 @@ const BookDetails = ({ user }) => {
   }
 
   const handleAddReview = async (reviewData) => {
-    const newReview = await bookService.createReview(qKey, reviewData)
-    setBookDetails({...bookDetails, reviews: [...bookDetails.reviews, newReview]})
+    const newReview = await bookService.createReview(savedBook._id, reviewData)
+    setBookDetails({...bookDetails, reviews: [...savedBook.reviews, newReview]})
   }
 
 
@@ -110,6 +114,7 @@ const BookDetails = ({ user }) => {
         <section className={styles.reviewSection}>
           <h2>Reviews</h2>
           <NewReview handleAddReview={handleAddReview} />
+          <Reviews reviews={bookDetails.reviews} user={user} />
         </section>
         <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>

@@ -25,9 +25,9 @@ const show = async (qKey) => {
   }
 }
 
-const createReview = async (qKey, reviewData) => {
+const createReview = async (bookId, reviewData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${qKey}/reviews`, {
+    const res = await fetch(`${BASE_URL}/${bookId}/reviews`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
