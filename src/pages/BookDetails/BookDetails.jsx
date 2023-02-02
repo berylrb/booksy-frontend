@@ -114,7 +114,7 @@ const BookDetails = ({ user }) => {
         <section className={styles.reviewSection}>
           <h2>Reviews</h2>
           <NewReview handleAddReview={handleAddReview} />
-          <Reviews reviews={bookDetails.reviews} user={user} />
+          <Reviews reviews={savedBook?.reviews} user={user} />
         </section>
         <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>
