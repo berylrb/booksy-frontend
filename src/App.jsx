@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import Profile from './pages/Profile/Profile'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BookList from './pages/BookList/BookList'
 import BookDetails from './pages/BookDetails/BookDetails'
@@ -49,6 +50,9 @@ const App = () => {
     if (user) fetchAllBooks()
   }, [user])
 
+
+  
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -77,6 +81,13 @@ const App = () => {
               <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
             </ProtectedRoute>
           }
+        />
+        <Route
+          path="/profiles/:id"
+          element={<Profile 
+            profile={user?.profile} 
+            user={user}
+            />}
         />
         <Route
           path="/books"
