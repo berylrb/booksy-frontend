@@ -2,6 +2,7 @@ import styles from './Profile.module.css'
 import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import * as profileService from '../../services/profileService'
+import Bookshelf from '../../components/Bookshelf/Bookshelf'
 
 
 const Profile = ({ user }) => {
@@ -28,11 +29,19 @@ const Profile = ({ user }) => {
             <>
               <p>My Profile</p>
               <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" />
+              <div className={styles.bookshelfDiv}>
+                <h4>My Bookshelf</h4>
+                <Bookshelf profile={profile} user={user} />
+              </div>
             </>
             :
             <>
               <p>{profile?.name}'s Profile</p>
               <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" />
+              <div className={styles.bookshelfDiv}>
+                <h4>{profile?.name}'s Bookshelf</h4>
+                <Bookshelf profile={profile} user={user} />
+              </div>
             </>
         }
 
