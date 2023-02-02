@@ -10,7 +10,7 @@ const BookRating = ({ ratings }) => {
         <span>
           <h4 className={styles.avgH4Label}>Average Rating:</h4>
           <h4 className={styles.avgH4Value}>
-            {avg}
+            {avg} / 5
           </h4>
         </span>
         <span>

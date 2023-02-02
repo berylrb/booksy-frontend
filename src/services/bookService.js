@@ -25,6 +25,22 @@ const show = async (qKey) => {
   }
 }
 
+const createReview = async (bookId, reviewData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${bookId}/reviews`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reviewData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const findReviewsByKey = async (qKey) => {
   try {
 
@@ -57,5 +73,6 @@ export {
   index,
   show,
   findReviewsByKey,
-  getRatings
+  getRatings,
+  createReview
 }
