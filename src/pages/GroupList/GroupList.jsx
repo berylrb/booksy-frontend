@@ -2,12 +2,15 @@ import styles from './GroupList.module.css'
 
 
 const GroupList = (props) => {
-  console.log('grouplist props', props)
 
   return (
     <>
       <main className={styles.groupListContainer}>
-        Group List
+        {props.groups.map((group) => (
+          <p key={group._id}>
+            {group.groupName}
+          </p>
+        ))}
       </main>
     </>
   );
