@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Loading from '../Loading/Loading';
+import ProfileCard from '../../components/ProfileCard/ProfileCard';
 
 //Services
 import * as groupService from '../../services/groupService'
@@ -41,7 +42,7 @@ const GroupDetails = (props) => {
           <h4>Group Members</h4>
           <ul className={styles.membersList}>
             {group.members.map(member => (
-              <li key={member._id}>{member.name}</li>
+              <li key={member._id}><ProfileCard profile={member} /></li>
             ))}
           </ul>
         </section>
