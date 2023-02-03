@@ -11,6 +11,7 @@ import Profile from './pages/Profile/Profile'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BookList from './pages/BookList/BookList'
 import BookDetails from './pages/BookDetails/BookDetails'
+import GroupList from './pages/GroupList/GroupList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -19,6 +20,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as bookService from './services/bookService'
+import * as groupService from './services/groupService'
 
 // styles
 import './App.css'
@@ -26,6 +28,7 @@ import './App.css'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [books, setBooks] = useState([])
+  const [groups, setGroups] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -51,7 +54,14 @@ const App = () => {
   }, [user])
 
 
-  
+  useEffect(() => {
+    const fetchAllGroups = async() => {
+      const data = await groupService.index()
+      setGroups(data)
+      console.log('Group data', data)
+    }
+    fetchAllGroups()
+  }, [user])
 
   return (
     <>
@@ -84,16 +94,16 @@ const App = () => {
         />
         <Route
           path="/profiles/:id"
-          element={<Profile 
-            profile={user?.profile} 
+          element={<Profile
+            profile={user?.profile}
             user={user}
-            />}
+          />}
         />
         <Route
           path="/books"
           element={
             <ProtectedRoute user={user}>
-              <BookList books={books}/>
+              <BookList books={books} />
             </ProtectedRoute>
           }
         />
@@ -101,7 +111,15 @@ const App = () => {
           path="/books/:qKey"
           element={
             <ProtectedRoute user={user}>
-              <BookDetails user={user}/>
+              <BookDetails user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups"
+          element={
+            <ProtectedRoute user={user}>
+              <GroupList groups={groups}/>
             </ProtectedRoute>
           }
         />
