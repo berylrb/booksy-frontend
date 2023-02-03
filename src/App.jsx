@@ -12,6 +12,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import BookList from './pages/BookList/BookList'
 import BookDetails from './pages/BookDetails/BookDetails'
 import GroupList from './pages/GroupList/GroupList'
+import GroupDetails from './pages/GroupDetails/GroupDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -119,7 +120,15 @@ const App = () => {
           path="/groups"
           element={
             <ProtectedRoute user={user}>
-              <GroupList groups={groups}/>
+              <GroupList groups={groups} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups/:groupId"
+          element={
+            <ProtectedRoute user={user}>
+              <GroupDetails user={user} />
             </ProtectedRoute>
           }
         />

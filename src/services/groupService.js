@@ -13,6 +13,19 @@ const index = async () => {
   }
 }
 
+const show = async (groupId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${groupId}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
+  show,
+  
 }

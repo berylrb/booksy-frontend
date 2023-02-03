@@ -1,13 +1,15 @@
 import styles from './GroupList.module.css'
+import GroupCard from '../../components/GroupCard/GroupCard';
 
 
 const GroupList = (props) => {
-  console.log('grouplist props', props)
 
   return (
     <>
       <main className={styles.groupListContainer}>
-        Group List
+        {props.groups.map((group) => (
+          <GroupCard key={group._id} group={group} />
+        ))}
       </main>
     </>
   );
