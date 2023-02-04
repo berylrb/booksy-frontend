@@ -31,7 +31,8 @@ const GroupDetails = (props) => {
           {group.owner._id === props.user.profile &&
             <>
               <span>
-                <Link to={`/groups/${groupId}/edit`} state={group}>Edit</Link>
+                <Link to={`/groups/${groupId}/edit`} state={group}><button>Edit</button></Link>
+                <button onClick={() => props.handleDeleteGroup(groupId)}>Delete</button>
               </span>
             </>
           }

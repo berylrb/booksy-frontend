@@ -148,7 +148,7 @@ const App = () => {
           path="/groups/:groupId"
           element={
             <ProtectedRoute user={user}>
-              <GroupDetails user={user} />
+              <GroupDetails user={user} handleDeleteGroup={handleDeleteGroup} />
             </ProtectedRoute>
           }
         />
