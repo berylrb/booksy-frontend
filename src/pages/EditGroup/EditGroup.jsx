@@ -39,6 +39,15 @@ const EditGroup = (props) => {
             placeholder="Group Name"
             onChange={handleChange}
           />
+          <label htmlFor="desc-input">Description</label>
+          <textarea
+            required
+            type="text"
+            name="description"
+            id="desc-input"
+            value={form.description}
+            placeholder="Description"
+            onChange={handleChange} />
           <div className={styles.inputContainer}>
             <label htmlFor="photo-upload" className={styles.label}>
               Upload Photo
