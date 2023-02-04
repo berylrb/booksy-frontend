@@ -1,6 +1,6 @@
 import styles from './GroupDetails.module.css'
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import Loading from '../Loading/Loading';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
@@ -28,6 +28,14 @@ const GroupDetails = (props) => {
     <>
       <main className={styles.groupDetailsContainer}>
         <article>
+          {group.owner._id === props.user.profile &&
+            <>
+              <span>
+                <Link to={`/groups/${groupId}/edit`} state={group}><button>Edit</button></Link>
+                <button onClick={() => props.handleDeleteGroup(groupId)}>Delete</button>
+              </span>
+            </>
+          }
           <header>
             <h2>{group.groupName}</h2>
             <div className={styles.groupImgDiv}>

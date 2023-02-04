@@ -14,6 +14,7 @@ import BookDetails from './pages/BookDetails/BookDetails'
 import GroupList from './pages/GroupList/GroupList'
 import GroupDetails from './pages/GroupDetails/GroupDetails'
 import NewGroup from './pages/NewGroup/NewGroup'
+import EditGroup from './pages/EditGroup/EditGroup'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -46,6 +47,18 @@ const App = () => {
   const handleAddGroup = async (groupData) => {
     const newGroup = await groupService.create(groupData)
     setGroups([newGroup, ...groups])
+    navigate('/groups')
+  }
+
+  const handleUpdateGroup = async (groupData) => {
+    const updatedGroup = await groupService.update(groupData)
+    setGroups(groups.map((group) => groupData._id === group._id ? updatedGroup : group))
+    navigate('/groups')
+  }
+
+  const handleDeleteGroup = async (groupId) => {
+    const deletedGroup = await groupService.deleteGroup(groupId)
+    setGroups(groups.filter(group => group._id !== deletedGroup._id))
     navigate('/groups')
   }
 
@@ -135,7 +148,7 @@ const App = () => {
           path="/groups/:groupId"
           element={
             <ProtectedRoute user={user}>
-              <GroupDetails user={user} />
+              <GroupDetails user={user} handleDeleteGroup={handleDeleteGroup} />
             </ProtectedRoute>
           }
         />
@@ -144,6 +157,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <NewGroup handleAddGroup={handleAddGroup} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups/:groupId/edit"
+          element={
+            <ProtectedRoute user={user}>
+              <EditGroup handleUpdateGroup={handleUpdateGroup} user={user} />
             </ProtectedRoute>
           }
         />

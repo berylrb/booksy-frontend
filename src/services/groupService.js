@@ -40,8 +40,40 @@ const create = async (groupData) => {
   }
 }
 
+const update = async (groupData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${groupData._id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(groupData)
+    })
+    return res.json() 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const deleteGroup = async(groupId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${groupId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
   show,
   create,
+  update,
+  deleteGroup
 }
