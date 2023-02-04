@@ -18,7 +18,7 @@ const BookDetails = ({ user }) => {
 
   //state variables
   const [bookDetails, setBookDetails] = useState(null)
-  const [savedBook, setSavedBook] = useState()
+  const [savedBook, setSavedBook] = useState({})
   const [bookRatings, setBookRatings] = useState(null)
 
   //location & params variables
@@ -27,7 +27,6 @@ const BookDetails = ({ user }) => {
   const { authorName } = location.state
   const { qKey } = useParams()
 
-  const keyCheck = '/works/'
 
   const bookDesc = bookDetails?.description?.value
 
@@ -46,9 +45,9 @@ const BookDetails = ({ user }) => {
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
-      const res = await bookService.findReviewsByKey(qKey)
-      setSavedBook(res)
-      console.log('res', res, data, keyCheck + data.key)
+      const bookres = await bookService.findReviewsByKey(qKey)
+      setSavedBook(bookres)
+      console.log(savedBook, 'saved book', bookres)
       setBookDetails(data)
     }
     fetchBook()
@@ -103,7 +102,7 @@ const BookDetails = ({ user }) => {
         <p></p>
       }
         {/* <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button> */}
-        {(keyCheck + savedBook.qKey) !== bookDetails.key ?
+        {savedBook >= 0 ?
           <>
             <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
           </>
@@ -116,7 +115,7 @@ const BookDetails = ({ user }) => {
         <section className={styles.reviewSection}>
           <h2>Reviews</h2>
           <NewReview handleAddReview={handleAddReview} />
-          <Reviews reviews={savedBook?.reviews} user={user} />
+          <Reviews reviews={bookDetails.reviews} user={user} />
         </section>
         <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>
