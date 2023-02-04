@@ -26,7 +26,7 @@ const show = async (groupId) => {
 
 const create = async (groupData) => {
   try {
-    const res = await fetch(`${BASE_URL}/new-group`, {
+    const res = await fetch(`${BASE_URL}`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
