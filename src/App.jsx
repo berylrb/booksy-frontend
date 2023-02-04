@@ -49,6 +49,12 @@ const App = () => {
     navigate('/groups')
   }
 
+  const handleUpdategroup = async (groupData) => {
+    const updatedGroup = await groupService.update(groupData)
+    setGroups(groups.map((group) => groupData._id === group._id ? updatedGroup : group))
+    navigate('/groups')
+  }
+
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
