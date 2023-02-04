@@ -56,6 +56,12 @@ const App = () => {
     navigate('/groups')
   }
 
+  const handleDeleteGroup = async (groupId) => {
+    const deletedGroup = await groupService.deleteGroup(groupId)
+    setGroups(groups.filter(group => group._id !== deletedGroup._id))
+    navigate('/groups')
+  }
+
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
