@@ -18,19 +18,34 @@ const BookDetails = ({ user }) => {
 
   //state variables
   const [bookDetails, setBookDetails] = useState(null)
-  const [savedBook, setSavedBook] = useState({})
+  const [savedBook, setSavedBook] = useState()
   const [bookRatings, setBookRatings] = useState(null)
+  const [profile, setProfile] = useState()
+  const [isCollected, setIsCollected] = useState(null)
+
+
+
 
   //location & params variables
   const { imgKey } = location.state
   const { imgLink } = location.state
   const { authorName } = location.state
   const { qKey } = useParams()
+  const id = user.profile
 
 
   const bookDesc = bookDetails?.description?.value
 
-//get rating details
+  //get profile
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profileData = await profileService.show(id)
+      setProfile(profileData)
+    }
+    fetchProfile()
+  }, [id])
+
+  //get rating details
   useEffect(() => {
     const ratingData = async () => {
       const res = await bookService.getRatings(qKey)
@@ -41,13 +56,14 @@ const BookDetails = ({ user }) => {
   console.log(bookRatings)
 
 
-//get book details
+  //get book details
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
-      const bookres = await bookService.findReviewsByKey(qKey)
-      setSavedBook(bookres)
-      console.log(savedBook, 'saved book', bookres)
+      console.log('Book data:', data)
+
+      setIsCollected(data.collectedByPerson?.includes(user.profile))
+
       setBookDetails(data)
     }
     fetchBook()
@@ -59,6 +75,7 @@ const BookDetails = ({ user }) => {
     evt.preventDefault()
     const formData = {
       ...bookDetails,
+      qKey: qKey,
       author: authorName[0],
       imgUrl: imgLink,
       collectedByPerson: [],
@@ -76,10 +93,9 @@ const BookDetails = ({ user }) => {
 
   const handleAddReview = async (reviewData) => {
     const newReview = await bookService.createReview(savedBook._id, reviewData)
-    setBookDetails({...bookDetails, reviews: [...savedBook.reviews, newReview]})
+    setBookDetails({ ...bookDetails, reviews: [...savedBook.reviews, newReview] })
   }
 
-  console.log(bookDetails, 'deeeets')
 
   if (!bookDetails) return <Loading />
 
@@ -97,18 +113,18 @@ const BookDetails = ({ user }) => {
           <p>{bookDesc}</p>
         </div>
         {bookRatings !== null ?
-        <BookRating ratings={bookRatings} />
-        :
-        <p></p>
-      }
+          <BookRating ratings={bookRatings} />
+          :
+          <p></p>
+        }
         {/* <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button> */}
-        {savedBook >= 0 ?
+        {isCollected >= 0 ?
           <>
-            <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+            <p>This book is already in your bookshelf.</p>
           </>
           :
           <>
-            <p>This book is already in your bookshelf.</p>
+            <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
           </>
         }
 
