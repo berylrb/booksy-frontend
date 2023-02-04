@@ -27,6 +27,7 @@ const BookDetails = ({ user }) => {
   const { authorName } = location.state
   const { qKey } = useParams()
 
+  const keyCheck = '/works/'
 
   const bookDesc = bookDetails?.description?.value
 
@@ -47,7 +48,7 @@ const BookDetails = ({ user }) => {
       const data = await bookService.show(qKey)
       const res = await bookService.findReviewsByKey(qKey)
       setSavedBook(res)
-      console.log('res', res)
+      console.log('res', res, data, keyCheck + data.key)
       setBookDetails(data)
     }
     fetchBook()
@@ -79,6 +80,7 @@ const BookDetails = ({ user }) => {
     setBookDetails({...bookDetails, reviews: [...savedBook.reviews, newReview]})
   }
 
+  console.log(bookDetails, 'deeeets')
 
   if (!bookDetails) return <Loading />
 
@@ -101,7 +103,7 @@ const BookDetails = ({ user }) => {
         <p></p>
       }
         {/* <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button> */}
-        {savedBook >= 0 ?
+        {(keyCheck + savedBook.qKey) !== bookDetails.key ?
           <>
             <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
           </>
