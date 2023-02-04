@@ -21,7 +21,7 @@ const Profiles = () => {
         <>
           {profiles.map(profile =>
             <Link
-              key={profile.id}
+              key={profile._id}
               to={`/profiles/${profile._id}`}
             >
               <p key={profile._id}>{profile.name}</p>
