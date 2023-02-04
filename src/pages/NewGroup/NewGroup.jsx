@@ -21,7 +21,7 @@ const NewGroup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    props.handleAddGroup(form)
   }
 
   return (
@@ -60,6 +60,7 @@ const NewGroup = (props) => {
               onChange={handleChangePhoto}
             />
           </div>
+          <button type="submit">SUBMIT</button>
         </form>
       </main>
     </>

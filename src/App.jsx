@@ -13,6 +13,7 @@ import BookList from './pages/BookList/BookList'
 import BookDetails from './pages/BookDetails/BookDetails'
 import GroupList from './pages/GroupList/GroupList'
 import GroupDetails from './pages/GroupDetails/GroupDetails'
+import NewGroup from './pages/NewGroup/NewGroup'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -40,6 +41,12 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddGroup = async (groupData) => {
+    const newGroup = await groupService.create(groupData)
+    setGroups([newGroup, ...groups])
+    navigate('/groups')
   }
 
   useEffect(() => {
@@ -129,6 +136,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <GroupDetails user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups/new"
+          element={
+            <ProtectedRoute user={user}>
+              <NewGroup handleAddGroup={handleAddGroup} />
             </ProtectedRoute>
           }
         />
