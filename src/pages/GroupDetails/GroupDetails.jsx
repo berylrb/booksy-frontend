@@ -20,12 +20,14 @@ const GroupDetails = (props) => {
     fetchGroup()
   }, [groupId])
   
-  const handleSubmit = async (evt) => {
+  const handleJoin = async (evt) => {
     evt.preventDefault()
     const newMember = await groupService.joinGroup(groupId)
     setGroup(newMember)
     console.log(group, 'group')
   }
+
+  const handleLeave = 
 
 
   const inGroup = group?.members?.filter(member => {
@@ -50,7 +52,7 @@ const GroupDetails = (props) => {
           }
           {inGroup?.length === 0 ?
             <>
-            <button onClick={handleSubmit}>Join Group</button>
+            <button onClick={handleJoin}>Join Group</button>
             </>
             :
             <>
