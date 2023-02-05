@@ -34,7 +34,7 @@ const BookDetails = ({ user }) => {
   const id = user.profile
 
 
-  const bookDesc = bookDetails?.description?.value
+  const bookDesc = bookDetails?.description?.value ? bookDetails?.description?.value : "No description available."
 
   //get profile
   useEffect(() => {
@@ -80,7 +80,8 @@ const BookDetails = ({ user }) => {
       imgUrl: imgLink,
       collectedByPerson: [],
       collectedByGroup: [],
-      reviews: []
+      reviews: [],
+      description: bookDesc
     }
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
