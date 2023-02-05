@@ -27,7 +27,11 @@ const GroupDetails = (props) => {
     console.log(group, 'group')
   }
 
-  const handleLeave = 
+  const handleLeave = async (evt) => {
+    evt.preventDefault()
+    const leaveGroup = await groupService.leaveGroup(groupId)
+    setGroup(leaveGroup)
+  }
 
 
   const inGroup = group?.members?.filter(member => {
@@ -57,6 +61,7 @@ const GroupDetails = (props) => {
             :
             <>
             <p>You're a member of {group.groupName}</p>
+            <button onClick={handleLeave}>Leave Group</button>
             </>
           
         }
