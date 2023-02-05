@@ -9,10 +9,9 @@ import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import * as groupService from '../../services/groupService'
 
 const GroupDetails = (props) => {
-
   const { groupId } = useParams()
   const [group, setGroup] = useState(null)
-
+  
   useEffect(() => {
     const fetchGroup = async () => {
       const data = await groupService.show(groupId)
@@ -20,15 +19,34 @@ const GroupDetails = (props) => {
     }
     fetchGroup()
   }, [groupId])
+  
+  const handleJoin = async (evt) => {
+    evt.preventDefault()
+    const newMember = await groupService.joinGroup(groupId)
+    setGroup(newMember)
+    console.log(group, 'group')
+  }
+
+  const handleLeave = async (evt) => {
+    evt.preventDefault()
+    const leaveGroup = await groupService.leaveGroup(groupId)
+    setGroup(leaveGroup)
+  }
 
 
+  const inGroup = group?.members?.filter(member => {
+    return member._id === props.user.profile
+  })
+
+
+  
   if (!group) return <Loading />
 
   return (
     <>
       <main className={styles.groupDetailsContainer}>
         <article>
-          {group.owner._id === props.user.profile &&
+          {group.owner?._id === props.user.profile &&
             <>
               <span>
                 <Link to={`/groups/${groupId}/edit`} state={group}><button>Edit</button></Link>
@@ -36,6 +54,17 @@ const GroupDetails = (props) => {
               </span>
             </>
           }
+          {inGroup?.length === 0 ?
+            <>
+            <button onClick={handleJoin}>Join Group</button>
+            </>
+            :
+            <>
+            <p>You're a member of {group.groupName}</p>
+            <button onClick={handleLeave}>Leave Group</button>
+            </>
+          
+        }
           <header>
             <h2>{group.groupName}</h2>
             <div className={styles.groupImgDiv}>
