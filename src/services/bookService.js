@@ -25,6 +25,21 @@ const show = async (qKey) => {
   }
 }
 
+const bookSearch = async (formData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/search`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const createReview = async (bookId, reviewData) => {
   try {
     const res = await fetch(`${BASE_URL}/${bookId}/reviews`, {
@@ -74,5 +89,6 @@ export {
   show,
   findReviewsByKey,
   getRatings,
-  createReview
+  createReview,
+  bookSearch
 }
