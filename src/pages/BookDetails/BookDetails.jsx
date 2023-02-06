@@ -32,9 +32,15 @@ const BookDetails = ({ user }) => {
   const { imgKey } = location.state
   const { imgLink } = location.state
   const { authorName } = location.state
+  const { groups } = location.state
   const { qKey } = useParams()
   const id = user.profile
 
+  const userGroups = groups.filter(group => {
+    return group.owner._id === id
+  })
+
+  console.log(userGroups, id, 'mygroups')
 
   const bookDesc = bookDetails?.description?.value ? bookDetails?.description?.value : "No description available."
 
@@ -71,7 +77,7 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
-  console.log(bookDetails)
+  
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -94,7 +100,6 @@ const BookDetails = ({ user }) => {
     console.log(groupId, 'set group')
   }
 
-  // console.log('saved', user.savedBooks)
 
   const buttonSubmit = async (evt) => {
     navigate('/books')
@@ -111,7 +116,6 @@ const BookDetails = ({ user }) => {
     console.log(groupId, 'groupid')
   }
 
-  console.log(profile, 'groups')
 
   if (!bookDetails) return <Loading />
 
@@ -145,8 +149,8 @@ const BookDetails = ({ user }) => {
                 id="group-id"
                 onChange={handleChange}
               >
-              {profile.joinedGroups.map(group => 
-                <option value={group} placeholder={group}>{group}</option>
+              {userGroups.map(group => 
+                <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
               )}
               </select>
               <button>Suggest to Group</button>

@@ -7,16 +7,16 @@ import * as bookService from '../../services/bookService'
 // import Icon from "../Icon/Icon"
 // import AuthorInfo from "../AuthorInfo/AuthorInfo"
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, groups }) => {
   const bookTitle = book.title
   const authorName = book.author_name
   const qKey = book.key.split('s/')[1]
   const imgKey = book.lending_edition_s ? book.lending_edition_s : book.cover_edition_key
   const imgLink = `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg`
-
+  console.log(groups, 'groups')
   
   return (
-    <Link to={`/books/${qKey}`} state={{ imgKey, imgLink, authorName }}>
+    <Link to={`/books/${qKey}`} state={{ imgKey, imgLink, authorName, groups }}>
       <article className={styles.container}>
         <header>
           <img src={imgLink} alt="book cover" />
