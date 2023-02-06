@@ -28,12 +28,12 @@ const show = async (qKey) => {
 const bookSearch = async (formData) => {
   try {
     const res = await fetch(`${BASE_URL}/search`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      // body: JSON.stringify(formData)
     })
     return res.json()
   } catch (error) {

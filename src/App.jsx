@@ -15,6 +15,7 @@ import GroupList from './pages/GroupList/GroupList'
 import GroupDetails from './pages/GroupDetails/GroupDetails'
 import NewGroup from './pages/NewGroup/NewGroup'
 import EditGroup from './pages/EditGroup/EditGroup'
+import BookSearch from './pages/BookSearch/BookSearch'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -133,6 +134,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <BookDetails user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/books/search"
+          element={
+            <ProtectedRoute user={user}>
+              <BookSearch user={user} />
             </ProtectedRoute>
           }
         />
