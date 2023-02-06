@@ -10,6 +10,7 @@ import Reviews from "../../components/Reviews/Reviews"
 // Services
 import * as bookService from '../../services/bookService'
 import * as profileService from '../../services/profileService'
+import * as groupService from '../../services/groupService'
 
 const BookDetails = ({ user }) => {
   //initialize navigate, location
@@ -22,6 +23,7 @@ const BookDetails = ({ user }) => {
   const [bookRatings, setBookRatings] = useState(null)
   const [profile, setProfile] = useState()
   const [isCollected, setIsCollected] = useState(null)
+  const [groupId, setGroupId] = useState()
 
 
 
@@ -86,6 +88,12 @@ const BookDetails = ({ user }) => {
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
   }
+
+  const handleChange = ({ target }) => {
+    setGroupId(target.value)
+    console.log(groupId, 'set group')
+  }
+
   // console.log('saved', user.savedBooks)
 
   const buttonSubmit = async (evt) => {
@@ -97,6 +105,13 @@ const BookDetails = ({ user }) => {
     setBookDetails({ ...bookDetails, reviews: [...savedBook.reviews, newReview] })
   }
 
+  const handleAddBookToGroup = async (evt) => {
+    evt.preventDefault()
+    const groupBook = await groupService.addBook(groupId, qKey)
+    console.log(groupId, 'groupid')
+  }
+
+  console.log(profile, 'groups')
 
   if (!bookDetails) return <Loading />
 
@@ -118,11 +133,25 @@ const BookDetails = ({ user }) => {
           :
           <p></p>
         }
-        {/* <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button> */}
         {isCollected >= 0 ?
           <>
             <p>This book is already in your bookshelf.</p>
-          </>
+          
+            <form onSubmit={handleAddBookToGroup}>
+              <label htmlFor="group-input">Your Groups</label>
+              <select
+                required
+                name="groupId"
+                id="group-id"
+                onChange={handleChange}
+              >
+              {profile.joinedGroups.map(group => 
+                <option value={group} placeholder={group}>{group}</option>
+              )}
+              </select>
+              <button>Suggest to Group</button>
+            </form>
+            </>
           :
           <>
             <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
