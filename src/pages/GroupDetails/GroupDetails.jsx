@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 
 import Loading from '../Loading/Loading';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
+import BookshelfCard from '../../components/BookshelfCard/BookshelfCard';
 
 //Services
 import * as groupService from '../../services/groupService'
@@ -11,7 +12,7 @@ import * as groupService from '../../services/groupService'
 const GroupDetails = (props) => {
   const { groupId } = useParams()
   const [group, setGroup] = useState(null)
-  
+
   useEffect(() => {
     const fetchGroup = async () => {
       const data = await groupService.show(groupId)
@@ -19,7 +20,7 @@ const GroupDetails = (props) => {
     }
     fetchGroup()
   }, [groupId])
-  
+
   const handleJoin = async (evt) => {
     evt.preventDefault()
     const newMember = await groupService.joinGroup(groupId)
@@ -38,8 +39,10 @@ const GroupDetails = (props) => {
     return member._id === props.user.profile
   })
 
+  const suggestedBooks = group?.booksRead
 
-  
+  console.log(suggestedBooks, 'suggested')
+
   if (!group) return <Loading />
 
   return (
@@ -56,15 +59,15 @@ const GroupDetails = (props) => {
           }
           {inGroup?.length === 0 ?
             <>
-            <button onClick={handleJoin}>Join Group</button>
+              <button onClick={handleJoin}>Join Group</button>
             </>
             :
             <>
-            <p>You're a member of {group.groupName}</p>
-            <button onClick={handleLeave}>Leave Group</button>
+              <p>You're a member of {group.groupName}</p>
+              <button onClick={handleLeave}>Leave Group</button>
             </>
-          
-        }
+
+          }
           <header>
             <h2>{group.groupName}</h2>
             <div className={styles.groupImgDiv}>
@@ -75,6 +78,18 @@ const GroupDetails = (props) => {
             <p>{group.description}</p>
           </div>
         </article>
+        {suggestedBooks.length > 0 &&
+
+          <section className={styles.booksSection}>
+            <h4>{group.groupName} are currently reading:</h4>
+            <ul className={styles.bookList}>
+              {suggestedBooks.map(book => (
+                <li key={book._id}><BookshelfCard book={book} /></li>
+              ))}
+            </ul>
+          </section>
+
+        }
         <section className={styles.membersSection}>
           <h4>Group Members</h4>
           <ul className={styles.membersList}>
