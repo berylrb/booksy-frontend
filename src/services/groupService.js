@@ -70,6 +70,21 @@ const leaveGroup = async (groupId) => {
   }
 }
 
+const addBook = async (groupId, qKey) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${groupId}/books/${qKey}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const update = async (groupData) => {
   try {
     const res = await fetch(`${BASE_URL}/${groupData._id}`, {
@@ -107,5 +122,6 @@ export {
   update,
   deleteGroup,
   joinGroup,
-  leaveGroup
+  leaveGroup,
+  addBook
 }
