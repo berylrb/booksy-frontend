@@ -24,7 +24,6 @@ const BookDetails = ({ user }) => {
   const [profile, setProfile] = useState()
   const [isCollected, setIsCollected] = useState(null)
   const [groupId, setGroupId] = useState()
-  const [group, setGroup] = useState(null)
 
 
 
@@ -33,9 +32,15 @@ const BookDetails = ({ user }) => {
   const { imgKey } = location.state
   const { imgLink } = location.state
   const { authorName } = location.state
+  const { groups } = location.state
   const { qKey } = useParams()
   const id = user.profile
 
+  const userGroups = groups.filter(group => {
+    return group.owner._id === id
+  })
+
+  console.log(userGroups, id, 'mygroups')
 
   const bookDesc = bookDetails?.description?.value ? bookDetails?.description?.value : "No description available."
 
@@ -95,17 +100,6 @@ const BookDetails = ({ user }) => {
     console.log(groupId, 'set group')
   }
 
-  useEffect(() => {
-    const fetchGroupDetails = async () => {
-      const data = await groupService.show(groupId)
-      setGroup(data)
-    }
-    fetchGroupDetails()
-  }, [groupId])
-
-  console.log(group, 'GROUP')
-
-  // console.log('saved', user.savedBooks)
 
   const buttonSubmit = async (evt) => {
     navigate('/books')
@@ -122,7 +116,6 @@ const BookDetails = ({ user }) => {
     console.log(groupId, 'groupid')
   }
 
-  console.log(profile, 'groups')
 
   if (!bookDetails) return <Loading />
 
@@ -156,8 +149,8 @@ const BookDetails = ({ user }) => {
                 id="group-id"
                 onChange={handleChange}
               >
-              {profile.joinedGroups.map(aGroup => 
-                <option value={aGroup} placeholder={group.groupName}>{group.groupName}</option>
+              {userGroups.map(group => 
+                <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
               )}
               </select>
               <button>Suggest to Group</button>

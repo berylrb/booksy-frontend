@@ -124,7 +124,7 @@ const App = () => {
           path="/books"
           element={
             <ProtectedRoute user={user}>
-              <BookList books={books} />
+              <BookList books={books} groups={groups} />
             </ProtectedRoute>
           }
         />
