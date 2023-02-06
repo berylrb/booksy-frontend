@@ -33,6 +33,7 @@ const bookSearch = async (formData) => {
         'Authorization': `Bearer ${tokenService.getToken()}`,
         'Content-Type': 'application/json'
       },
+      body: JSON.stringify(formData)
     })
     return res.json()
   } catch (error) {

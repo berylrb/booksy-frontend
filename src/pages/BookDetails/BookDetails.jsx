@@ -24,6 +24,7 @@ const BookDetails = ({ user }) => {
   const [profile, setProfile] = useState()
   const [isCollected, setIsCollected] = useState(null)
   const [groupId, setGroupId] = useState()
+  const [group, setGroup] = useState(null)
 
 
 
@@ -71,7 +72,7 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
-  console.log(bookDetails)
+  
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -93,6 +94,16 @@ const BookDetails = ({ user }) => {
     setGroupId(target.value)
     console.log(groupId, 'set group')
   }
+
+  useEffect(() => {
+    const fetchGroupDetails = async () => {
+      const data = await groupService.show(groupId)
+      setGroup(data)
+    }
+    fetchGroupDetails()
+  }, [groupId])
+
+  console.log(group, 'GROUP')
 
   // console.log('saved', user.savedBooks)
 
@@ -145,8 +156,8 @@ const BookDetails = ({ user }) => {
                 id="group-id"
                 onChange={handleChange}
               >
-              {profile.joinedGroups.map(group => 
-                <option value={group} placeholder={group}>{group}</option>
+              {profile.joinedGroups.map(aGroup => 
+                <option value={aGroup} placeholder={group.groupName}>{group.groupName}</option>
               )}
               </select>
               <button>Suggest to Group</button>
