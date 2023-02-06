@@ -170,3 +170,7 @@ const BookDetails = ({ user }) => {
 }
 
 export default BookDetails
+
+
+//conditionally render groups that are visible to suggest a book to
+
