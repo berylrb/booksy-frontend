@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const SearchForm = (props) => {
   const [formData, setFormData] = useState({
-    search: ''
+    query: ''
   })
 
   const handleChange = (evt) => {
@@ -27,8 +27,8 @@ const SearchForm = (props) => {
           <label htmlFor="search-input">Search:</label>
           <input
             type="text"
-            value={formData.search}
-            name="search"
+            value={formData.query}
+            name="query"
             onChange={handleChange}
             required
           />
