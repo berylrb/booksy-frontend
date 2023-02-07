@@ -11,6 +11,11 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  background-color: rgba(248, 247, 244, 0.203);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 0 5px rgb(38, 65, 65);
 }
 
 .menuNav {
@@ -18,50 +23,59 @@
   list-style: none;
   position: fixed;
   top: 0;
-  background: darkcyan;
+  background: rgba(248, 247, 244, 0.906);
   right: 0;
-  bottom: 0;
-  height: 100vh;
+  bottom: 10px;
+  height: 40%;
   width: 0;
   overflow: hidden;
   max-width: 200px;
   z-index: 9;
   display: none;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .menuNav.showMenu {
   width: 100%;
-  /* display: block; */
-  height: 40%;
-  display: flex;
+  display: block;
+  height: 50%;
+  /* display: flex; */
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  padding-top: -20px;
 }
 
 .link {
   display: block;
   padding: 10px 40px;
   text-decoration: none;
-  color: #3fffd2;
+  color: rgba(249, 249, 248, 0.877);
+  background-color: rgb(84, 141, 141);
   text-transform: uppercase;
   font-weight: bold;
+  font-size: .7em;
+  margin: 10px 25px 10px 5px;
+  border-radius: 4px;
+  text-align: center;
 }
 
 .menuNav li:first-child {
-  margin-top: 7rem;
+  margin-top: 3rem;
 }
 
 .closeButton {
-  height: 20px;
+  height: 30px;
   width: 20px;
-  color:darkslategrey;
+  color:rgb(29, 50, 50);
 }
 
 
 .openButton {
-  height: 20px;
-  width: 15px;
-  color:darkslategrey;
+  font-weight: 600;
+  height: 30px;
+  width: 20px;
+  color:rgb(29, 50, 50);
   
 }
