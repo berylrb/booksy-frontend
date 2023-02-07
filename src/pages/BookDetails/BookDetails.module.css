@@ -17,7 +17,23 @@
   margin: -15px 0 0 0
 }
 .titleAuthorSpan {
+  display: flex;
+  flex-direction: column;
+}
 
+.authorStarRatingDiv {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: -20px -10px 15px 15px;
+  justify-content: space-between;
+  padding: 6px;
+}
+
+.authorStarRatingDiv > p {
+  font-size: .8em;
+  
+  letter-spacing: .9px;
 }
 
 .titleAuthorSpan > h1 {
@@ -45,3 +61,4 @@
   font-size: .85em;
   margin: -20px 15px 15px 15px;
 }
+

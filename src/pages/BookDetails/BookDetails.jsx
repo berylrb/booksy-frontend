@@ -6,6 +6,8 @@ import Loading from "../Loading/Loading"
 import BookRating from "../../components/BookRating/BookRating"
 import NewReview from "../../components/NewReview/NewReview"
 import Reviews from "../../components/Reviews/Reviews"
+import Rating from '@mui/material/Rating';
+
 
 // Services
 import * as bookService from '../../services/bookService'
@@ -35,7 +37,7 @@ const BookDetails = ({ user }) => {
   const { qKey } = useParams()
   const id = user.profile
 
-  const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
+  const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-L.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
   const userGroups = groups.filter(group => {
     return group.owner._id === id
@@ -130,7 +132,15 @@ const BookDetails = ({ user }) => {
           <header>
             <span className={styles.titleAuthorSpan}>
               <h1>{bookDetails.title}</h1>
-              <p>by {authorName[0]}</p>
+              <div className={styles.authorStarRatingDiv}>
+                <p>by {authorName[0]}</p>
+                {bookRatings !== null ?
+                  <BookRating ratings={bookRatings} />
+                  :
+                  <Rating name="no-value" value={null} size="small" />
+                }
+
+              </div>
             </span>
           </header>
           <div className={styles.descriptionDiv}>
@@ -138,11 +148,6 @@ const BookDetails = ({ user }) => {
             <p>{bookDesc}</p>
           </div>
         </div>
-        {bookRatings !== null ?
-          <BookRating ratings={bookRatings} />
-          :
-          <p></p>
-        }
         <p>More from this author</p>
         {isCollected >= 0 ?
           <>
