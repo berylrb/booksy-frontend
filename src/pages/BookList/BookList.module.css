@@ -12,14 +12,18 @@
 
 .blH2Div {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   min-width: 100%;
+  margin: 5px;
 }
 
 .blH2Div > h2 {
-  font-size: 1em;
-  font-weight: 300;
+  font-size: 1.1em;
+  font-weight: 500;
+  letter-spacing: .8px;
   font-style: italic;
+  color: rgb(87, 87, 87);
+  margin: 0 20px;
   
 }
