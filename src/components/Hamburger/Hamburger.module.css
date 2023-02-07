@@ -11,11 +11,11 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: rgba(248, 247, 244, 0.203);
+  background-color: rgba(248, 247, 244, 0);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 1px 0 5px rgb(38, 65, 65);
+  /* box-shadow: 1px 0 5px rgb(38, 65, 65); */
 }
 
 .menuNav {
@@ -62,20 +62,20 @@
 }
 
 .menuNav li:first-child {
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 
 .closeButton {
-  height: 30px;
-  width: 20px;
+  height: 60px;
+  width: 30px;
   color:rgb(29, 50, 50);
 }
 
 
 .openButton {
   font-weight: 600;
-  height: 30px;
-  width: 20px;
+  height: 60px;
+  width: 30px;
   color:rgb(29, 50, 50);
   
 }
