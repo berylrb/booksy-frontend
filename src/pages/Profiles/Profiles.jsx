@@ -12,7 +12,7 @@ const Profiles = () => {
     }
     fetchProfiles()
   }, [])
-  console.log(profiles, 'profiles')
+
 
   return (
     <>

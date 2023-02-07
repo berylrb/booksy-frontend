@@ -14,7 +14,6 @@ const BookCard = ({ book, groups }) => {
   const imgKey = book.lending_edition_s ? book.lending_edition_s : book.cover_edition_key
 
 
-  console.log(groups, 'groups')
   const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
   return (

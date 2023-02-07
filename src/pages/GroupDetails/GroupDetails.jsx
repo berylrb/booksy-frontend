@@ -25,7 +25,6 @@ const GroupDetails = (props) => {
     evt.preventDefault()
     const newMember = await groupService.joinGroup(groupId)
     setGroup(newMember)
-    console.log(group, 'group')
   }
 
   const handleLeave = async (evt) => {
@@ -41,7 +40,7 @@ const GroupDetails = (props) => {
 
   const suggestedBooks = group?.booksRead
 
-  console.log(suggestedBooks, 'suggested')
+
 
   if (!group) return <Loading />
 

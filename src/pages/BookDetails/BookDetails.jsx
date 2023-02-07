@@ -43,8 +43,6 @@ const BookDetails = ({ user }) => {
     return group.owner._id === id
   })
 
-  console.log(userGroups, id, 'mygroups')
-
   const bookDesc = bookDetails?.description?.value ? bookDetails?.description.value : "No description available."
 
   //get profile
@@ -64,14 +62,12 @@ const BookDetails = ({ user }) => {
     }
     ratingData()
   }, [qKey])
-  console.log(bookRatings)
 
 
   //get book details
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
-      console.log('Book data:', data)
 
       setIsCollected(data.collectedByPerson?.includes(user.profile))
 
@@ -100,7 +96,6 @@ const BookDetails = ({ user }) => {
 
   const handleChange = ({ target }) => {
     setGroupId(target.value)
-    console.log(groupId, 'set group')
   }
 
 
@@ -116,7 +111,6 @@ const BookDetails = ({ user }) => {
   const handleAddBookToGroup = async (evt) => {
     evt.preventDefault()
     const groupBook = await groupService.addBook(groupId, qKey)
-    console.log(groupId, 'groupid')
   }
 
 

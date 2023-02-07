@@ -12,7 +12,6 @@ const EditGroup = (props) => {
     setPhotoData({ imgUrl: evt.target.files[0] })
   }
 
-  console.log(state, 'state check')
 
   const handleChange = ({ target }) => {
     setForm({ ...form, [target.name]: target.value })
