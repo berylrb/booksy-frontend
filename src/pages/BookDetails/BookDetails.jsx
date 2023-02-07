@@ -43,7 +43,7 @@ const BookDetails = ({ user }) => {
 
   console.log(userGroups, id, 'mygroups')
 
-  const bookDesc = bookDetails?.description?.value ? bookDetails?.description?.value : "No description available."
+  const bookDesc = bookDetails?.description?.value ? bookDetails?.description.value : "No description available."
 
   //get profile
   useEffect(() => {
@@ -138,6 +138,7 @@ const BookDetails = ({ user }) => {
           :
           <p></p>
         }
+        <p>More from this author</p>
         {isCollected >= 0 ?
           <>
             <p>This book is already in your bookshelf.</p>
