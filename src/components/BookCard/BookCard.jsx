@@ -12,21 +12,23 @@ const BookCard = ({ book, groups }) => {
   const authorName = book.author_name
   const qKey = book.key.split('s/')[1]
   const imgKey = book.lending_edition_s ? book.lending_edition_s : book.cover_edition_key
-  const imgLink = `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg`
+
+
   console.log(groups, 'groups')
-  
+  const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
+
   return (
-    <Link to={`/books/${qKey}`} state={{ imgKey, imgLink, authorName, groups }}>
-      <article className={styles.container}>
-        <header>
-          <img src={imgLink} alt="book cover" />
-          <span>
-            <h1>{bookTitle}</h1>
-          </span>
-          <h4>{authorName}</h4>
+    <Link to={`/books/${qKey}`} state={{ imgKey, authorName, groups }} className={styles.link}>
+      <article className={styles.bookCardContainer}>
+        <header className={styles.bookCardHeader}>
+          <div className={styles.bookCoverDiv}>
+            <img src={bookImg} alt="book cover" />
+          </div>
+          <div className={styles.textDiv}>
+            <h4>{bookTitle}</h4>
+          </div>
+          {/* <h4>{authorName}</h4> */}
         </header>
-        {/* <p>{book.first_publish_year}</p> */}
-        {/* <p>{book.book_details[0].description}</p> */}
       </article>
     </Link>
   )

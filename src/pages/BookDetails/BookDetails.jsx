@@ -30,11 +30,12 @@ const BookDetails = ({ user }) => {
 
   //location & params variables
   const { imgKey } = location.state
-  const { imgLink } = location.state
   const { authorName } = location.state
   const { groups } = location.state
   const { qKey } = useParams()
   const id = user.profile
+  
+  const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
   const userGroups = groups.filter(group => {
     return group.owner._id === id
@@ -85,7 +86,7 @@ const BookDetails = ({ user }) => {
       ...bookDetails,
       qKey: qKey,
       author: authorName[0],
-      imgUrl: imgLink,
+      imgUrl: bookImg,
       collectedByPerson: [],
       collectedByGroup: [],
       reviews: [],
@@ -128,7 +129,7 @@ const BookDetails = ({ user }) => {
               <h1>{bookDetails.title}</h1>
             </span>
             <p>by {authorName[0]}</p>
-            <img src={imgLink} alt="book cover" />
+            <img src={bookImg} alt="book cover" />
           </header>
           <p>{bookDesc}</p>
         </div>
