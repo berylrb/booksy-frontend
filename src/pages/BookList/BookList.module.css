@@ -7,4 +7,19 @@
   align-items: center;
   overflow-x: hidden;
   margin: 10px 0;
+  overflow-y: scroll;
+}
+
+.blH2Div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+}
+
+.blH2Div > h2 {
+  font-size: 1em;
+  font-weight: 300;
+  font-style: italic;
+  
 }

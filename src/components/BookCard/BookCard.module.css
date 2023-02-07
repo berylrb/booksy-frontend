@@ -1,11 +1,11 @@
 .bookCardContainer {
   display: flex;
   flex-direction: column;
-  width: 8em;
+  width: 9em;
   max-height: 19em;
   justify-content: center;
   align-items: center;
-  margin: 18px 10px;
+  margin: 18px 20px;
   padding: 0 5px;
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 8px;
@@ -24,8 +24,8 @@
   justify-content: center;
   align-items: center;
   /* height: 280px; */
-  width: 7em;
-  height: 11em;
+  width: 8em;
+  height: 13em;
   overflow: hidden;
   object-fit: cover;
   margin: 13px 10px 0 10px;
@@ -34,17 +34,19 @@
 }
 
 .bookCoverDiv > img {
-  width: 7em;
-  height: 11em;
+  width: 8em;
+  height: 13em;
 }
 .link {
   text-decoration: none;
 }
 
 .textDiv > h4 {
-  font-weight: 400;
-  font-size: .7em;
+  font-weight: 500;
+  letter-spacing: .8px;
+  font-size: .9em;
   text-align: center;
+  color: darkslategrey;
 }
 
 .textDiv {
