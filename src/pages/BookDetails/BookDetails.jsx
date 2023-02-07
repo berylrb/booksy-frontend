@@ -34,7 +34,7 @@ const BookDetails = ({ user }) => {
   const { groups } = location.state
   const { qKey } = useParams()
   const id = user.profile
-  
+
   const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
   const userGroups = groups.filter(group => {
@@ -78,7 +78,7 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
-  
+
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -124,14 +124,19 @@ const BookDetails = ({ user }) => {
     <>
       <main>
         <div className={styles.detailsContainer}>
-          <header>
-            <span>
-              <h1>{bookDetails.title}</h1>
-            </span>
-            <p>by {authorName[0]}</p>
+          <div className={styles.bookDeetsImgDiv}>
             <img src={bookImg} alt="book cover" />
+          </div>
+          <header>
+            <span className={styles.titleAuthorSpan}>
+              <h1>{bookDetails.title}</h1>
+              <p>by {authorName[0]}</p>
+            </span>
           </header>
-          <p>{bookDesc}</p>
+          <div className={styles.descriptionDiv}>
+            <h4>Description</h4>
+            <p>{bookDesc}</p>
+          </div>
         </div>
         {bookRatings !== null ?
           <BookRating ratings={bookRatings} />
@@ -142,7 +147,7 @@ const BookDetails = ({ user }) => {
         {isCollected >= 0 ?
           <>
             <p>This book is already in your bookshelf.</p>
-          
+
             <form onSubmit={handleAddBookToGroup}>
               <label htmlFor="group-input">Your Groups</label>
               <select
@@ -151,13 +156,13 @@ const BookDetails = ({ user }) => {
                 id="group-id"
                 onChange={handleChange}
               >
-              {userGroups.map(group => 
-                <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
-              )}
+                {userGroups.map(group =>
+                  <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
+                )}
               </select>
               <button>Suggest to Group</button>
             </form>
-            </>
+          </>
           :
           <>
             <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
