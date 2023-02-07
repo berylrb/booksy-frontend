@@ -129,7 +129,7 @@ const BookDetails = ({ user }) => {
               <div className={styles.authorStarRatingDiv}>
                 <p>by {authorName[0]}</p>
                 {bookRatings !== null ?
-                  <BookRating ratings={bookRatings} />
+                  <BookRating  ratings={bookRatings} />
                   :
                   <Rating name="no-value" value={null} size="small" />
                 }
