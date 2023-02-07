@@ -10,6 +10,7 @@ const Profile = ({ user }) => {
 
   const [profile, setProfile] = useState()
 
+  const savedBookCheck = profile?.savedBooks?.length
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -40,10 +41,18 @@ const Profile = ({ user }) => {
               <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" />
               <div className={styles.bookshelfDiv}>
                 <h4>{profile?.name}'s Bookshelf</h4>
-                <Bookshelf profile={profile} user={user} />
+                {savedBookCheck > 0 ?
+                  <>
+                    <Bookshelf profile={profile} user={user} />
+                  </>
+                  :
+                  <>
+                    <p>{profile?.name} doesn't have any books in their bookshelf.</p>
+                  </>
+                }
               </div>
             </>
-        }
+          }
 
         </div>
       </main>

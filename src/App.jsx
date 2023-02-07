@@ -16,6 +16,7 @@ import GroupDetails from './pages/GroupDetails/GroupDetails'
 import NewGroup from './pages/NewGroup/NewGroup'
 import EditGroup from './pages/EditGroup/EditGroup'
 import BookSearch from './pages/BookSearch/BookSearch'
+import Hamburger from './components/Hamburger/Hamburger'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -87,7 +88,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <Hamburger user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route

@@ -1,0 +1,11 @@
+.bookShelfDiv {
+  height: 100%;
+  max-width: 100vw;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  margin: 10px 0;
+  overflow-y: scroll;
+}
