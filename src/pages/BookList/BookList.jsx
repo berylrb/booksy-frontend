@@ -2,7 +2,6 @@ import styles from './BookList.module.css'
 import BookCard from '../../components/BookCard/BookCard'
 
 const BookList = (props) => {
-  console.log(props.groups)
   return (
     <>
         <div className={styles.bookListHeaderDiv}>

@@ -67,11 +67,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
-      console.log(data.works)
       setBooks(data.works)
-      // data.results.forEach(result => {
-      //   console.log('Book Data', result.book_details[0].title)
-      // })
     }
     if (user) fetchAllBooks()
   }, [user])
@@ -81,7 +77,7 @@ const App = () => {
     const fetchAllGroups = async() => {
       const data = await groupService.index()
       setGroups(data)
-      console.log('Group data', data)
+
     }
     fetchAllGroups()
   }, [user])

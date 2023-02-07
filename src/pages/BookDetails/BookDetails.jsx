@@ -6,6 +6,8 @@ import Loading from "../Loading/Loading"
 import BookRating from "../../components/BookRating/BookRating"
 import NewReview from "../../components/NewReview/NewReview"
 import Reviews from "../../components/Reviews/Reviews"
+import Rating from '@mui/material/Rating';
+
 
 // Services
 import * as bookService from '../../services/bookService'
@@ -34,14 +36,12 @@ const BookDetails = ({ user }) => {
   const { groups } = location.state
   const { qKey } = useParams()
   const id = user.profile
-  
-  const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
+
+  const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-L.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
   const userGroups = groups.filter(group => {
     return group.owner._id === id
   })
-
-  console.log(userGroups, id, 'mygroups')
 
   const bookDesc = bookDetails?.description?.value ? bookDetails?.description.value : "No description available."
 
@@ -62,14 +62,12 @@ const BookDetails = ({ user }) => {
     }
     ratingData()
   }, [qKey])
-  console.log(bookRatings)
 
 
   //get book details
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
-      console.log('Book data:', data)
 
       setIsCollected(data.collectedByPerson?.includes(user.profile))
 
@@ -78,7 +76,7 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
-  
+
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -98,7 +96,6 @@ const BookDetails = ({ user }) => {
 
   const handleChange = ({ target }) => {
     setGroupId(target.value)
-    console.log(groupId, 'set group')
   }
 
 
@@ -114,7 +111,6 @@ const BookDetails = ({ user }) => {
   const handleAddBookToGroup = async (evt) => {
     evt.preventDefault()
     const groupBook = await groupService.addBook(groupId, qKey)
-    console.log(groupId, 'groupid')
   }
 
 
@@ -124,25 +120,33 @@ const BookDetails = ({ user }) => {
     <>
       <main>
         <div className={styles.detailsContainer}>
-          <header>
-            <span>
-              <h1>{bookDetails.title}</h1>
-            </span>
-            <p>by {authorName[0]}</p>
+          <div className={styles.bookDeetsImgDiv}>
             <img src={bookImg} alt="book cover" />
+          </div>
+          <header>
+            <span className={styles.titleAuthorSpan}>
+              <h1>{bookDetails.title}</h1>
+              <div className={styles.authorStarRatingDiv}>
+                <p>by {authorName[0]}</p>
+                {bookRatings !== null ?
+                  <BookRating ratings={bookRatings} />
+                  :
+                  <Rating name="no-value" value={null} size="small" />
+                }
+
+              </div>
+            </span>
           </header>
-          <p>{bookDesc}</p>
+          <div className={styles.descriptionDiv}>
+            <h4>Description</h4>
+            <p>{bookDesc}</p>
+          </div>
         </div>
-        {bookRatings !== null ?
-          <BookRating ratings={bookRatings} />
-          :
-          <p></p>
-        }
         <p>More from this author</p>
         {isCollected >= 0 ?
           <>
             <p>This book is already in your bookshelf.</p>
-          
+
             <form onSubmit={handleAddBookToGroup}>
               <label htmlFor="group-input">Your Groups</label>
               <select
@@ -151,13 +155,13 @@ const BookDetails = ({ user }) => {
                 id="group-id"
                 onChange={handleChange}
               >
-              {userGroups.map(group => 
-                <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
-              )}
+                {userGroups.map(group =>
+                  <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
+                )}
               </select>
               <button>Suggest to Group</button>
             </form>
-            </>
+          </>
           :
           <>
             <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>

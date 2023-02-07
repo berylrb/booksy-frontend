@@ -20,7 +20,7 @@ const Profile = ({ user }) => {
     fetchProfile()
   }, [id])
 
-  console.log(profile, 'profile')
+
 
   return (
     <>

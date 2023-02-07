@@ -3,7 +3,6 @@ import BookshelfCard from '../BookshelfCard/BookshelfCard'
 import { Link } from 'react-router-dom'
 
 const Bookshelf = ({ profile, user }) => {
-  console.log(profile, 'bookshelf profile')
   return (
     <>
       <div className={styles.bookShelfDiv}>

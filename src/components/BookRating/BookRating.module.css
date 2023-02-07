@@ -1,0 +1,15 @@
+.ratingDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 15px;
+  margin: 0 15px 0 0;
+}
+
+.ratingDiv > p {
+  font-size: .5em;
+  letter-spacing: 1px;
+  color: grey;
+  margin-top: 0;
+}
