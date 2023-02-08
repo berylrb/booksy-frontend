@@ -79,13 +79,13 @@
 }
 
 .moreAuthorButton {
-  width: 43%;
+  width: 163px;
   font-family: 'Montserrat', sans-serif;
   border-radius: 5px;
   border: none;
   padding: 13px 0;
   margin: 0 3px;
-  height: 50px;
+  height: 45px;
   color: #e4e1dc;
   background-color: #3d405b;
   display: flex;
@@ -95,11 +95,11 @@
 }
 
 .inBookShelfDiv {
-  width: 43%;
+  width: 163px;
   background-color: #e4e1dc;
   border-radius: 5px;
   padding: 0 10px;
-  height: 50px;
+  height: 45px;
   margin-right: 10px;
   display: flex;
   justify-content: center;
@@ -111,5 +111,21 @@
   font-weight: 400;
   text-align: center;
   color: #676665;
+}
+
+.addButton {
+  width: 163px;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  border: none;
+  padding: 13px 0;
+  margin: 0 3px;
+  height: 45px;
+  color: #eeebe6;
+  background-color: #729296;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
 }
 

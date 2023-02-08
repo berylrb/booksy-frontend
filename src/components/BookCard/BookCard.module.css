@@ -5,7 +5,7 @@
   max-height: 19em;
   justify-content: center;
   align-items: center;
-  margin: 18px 10px;
+  margin: 8px 10px;
   background-color: rgba(240, 240, 240, 0.25);
 }
 
@@ -40,7 +40,7 @@
   font-weight: 400;
   letter-spacing: .8px;
   font-size: .9em;
-  /* text-align: center; */
+  text-align: center;
   color: darkslategrey;
 }
 
