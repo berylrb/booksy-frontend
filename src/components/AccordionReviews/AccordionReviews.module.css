@@ -1,0 +1,15 @@
+.typography {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: .9em !important;
+  letter-spacing: 1px !important;
+}
+
+.accordion {
+  box-shadow: none;
+  margin: 15px 0 0 0;
+  background-color: rgba(248, 247, 244, 0.692);
+}
+
+.summary, .deets {
+  background-color: rgba(248, 247, 244, 0.692) !important;
+}

@@ -1,0 +1,27 @@
+.typography {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: .9em !important;
+  letter-spacing: 1px !important;
+}
+
+.accordion {
+  box-shadow: none;
+  background-color: rgba(248, 247, 244, 0.692);
+}
+
+.form {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form > select {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form > button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.summary, .deets {
+  background-color: rgba(248, 247, 244, 0.692) !important;
+}

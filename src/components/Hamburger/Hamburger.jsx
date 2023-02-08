@@ -4,6 +4,7 @@ import styles from './Hamburger.module.css'
 import { MdClose } from "react-icons/md"
 import { FiMenu } from "react-icons/fi"
 
+
 const Hamburger = (props) => {
   const [navOpen, setNavOpen] = useState(false)
 

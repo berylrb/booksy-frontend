@@ -7,6 +7,9 @@ import BookRating from "../../components/BookRating/BookRating"
 import NewReview from "../../components/NewReview/NewReview"
 import Reviews from "../../components/Reviews/Reviews"
 import Rating from '@mui/material/Rating';
+import AccordionReviews from "../../components/AccordionReviews/AccordionReviews"
+import AccordionGroup from "../../components/AccordionGroup/AccordionGroup"
+import BackButton from "../../components/BackButton/BackButton"
 
 
 // Services
@@ -39,11 +42,13 @@ const BookDetails = ({ user }) => {
 
   const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-L.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
+  const path = '/books'
+
   const userGroups = groups.filter(group => {
-    return group.owner._id === id
+    return group?.owner?._id === id
   })
 
-  const bookDesc = bookDetails?.description.value ? bookDetails?.description.value : bookDetails?.description
+  const bookDesc = bookDetails?.description?.value ? bookDetails?.description?.value : bookDetails?.description
 
   //get profile
   useEffect(() => {
@@ -78,6 +83,13 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
+  const handleRemove = async (evt) => {
+    evt.preventDefault()
+    const prof = await bookService.removeBook(qKey)
+    // setBookDetails(prof)
+    setIsCollected(bookDetails.collectedByPerson?.includes(user.profile))
+    console.log(isCollected, 'help')
+  }
 
 
   const handleSubmit = async (evt) => {
@@ -124,6 +136,7 @@ const BookDetails = ({ user }) => {
           <div className={styles.bookDeetsImgDiv}>
             <img src={bookImg} alt="book cover" />
           </div>
+          <BackButton path={path} buttonSubmit={buttonSubmit} />
           <header>
             <span className={styles.titleAuthorSpan}>
               <h1>{bookDetails.title}</h1>
@@ -144,28 +157,20 @@ const BookDetails = ({ user }) => {
           </div>
         </div>
 
-        {isCollected >= 0 ?
+        <section className={styles.reviewSection}>
+          <AccordionReviews handleAddReview={handleAddReview} reviews={bookDetails.reviews} user={user} />
+        </section>
+
+        {isCollected ?
           <>
+            <AccordionGroup handleChange={handleChange} userGroups={userGroups} handleAddBookToGroup={handleAddBookToGroup} />
             <div className={styles.buttonDiv}>
               <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
               <div className={styles.inBookShelfDiv}>
-                <p>This book is already in your bookshelf.</p>
+                <button onClick={handleRemove} className={styles.removeButton}>Remove from Bookshelf</button>
               </div>
             </div>
-            <form onSubmit={handleAddBookToGroup}>
-              <label htmlFor="group-input">Your Groups</label>
-              <select
-                required
-                name="groupId"
-                id="group-id"
-                onChange={handleChange}
-              >
-                {userGroups.map(group =>
-                  <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
-                )}
-              </select>
-              <button>Suggest to Group</button>
-            </form>
+
           </>
           :
           <>
@@ -175,13 +180,6 @@ const BookDetails = ({ user }) => {
             </div>
           </>
         }
-
-        <section className={styles.reviewSection}>
-          <h2>Reviews</h2>
-          <NewReview handleAddReview={handleAddReview} />
-          <Reviews reviews={bookDetails.reviews} user={user} />
-        </section>
-        <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>
     </>
   )
