@@ -173,7 +173,6 @@ const BookDetails = ({ user }) => {
             </div>
           </>
         }
-        <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>
     </>
   )

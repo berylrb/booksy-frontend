@@ -75,11 +75,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 5px;
+  margin: 20px 5px 40px 5px;
+  padding: 5px 0 30px 0;
 }
 
 .moreAuthorButton {
-  width: 163px;
+  width: 173px;
   font-family: 'Montserrat', sans-serif;
   border-radius: 5px;
   border: none;
@@ -91,16 +92,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 8px;
+  margin-left: 5px;
 }
 
 .inBookShelfDiv {
-  width: 163px;
+  width: 170px;
   background-color: #e4e1dc;
   border-radius: 5px;
   padding: 0 10px;
   height: 45px;
-  margin-right: 10px;
+  margin-right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +115,7 @@
 }
 
 .addButton {
-  width: 163px;
+  width: 173px;
   font-family: 'Montserrat', sans-serif;
   border-radius: 5px;
   border: none;

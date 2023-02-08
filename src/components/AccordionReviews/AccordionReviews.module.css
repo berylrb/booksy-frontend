@@ -1,6 +1,7 @@
 .typography {
   font-family: 'Montserrat', sans-serif !important;
-  font-size: 1em;
+  font-size: .9em !important;
+  letter-spacing: 1px !important;
 }
 
 .accordion {
