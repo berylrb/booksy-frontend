@@ -130,7 +130,7 @@ const BookDetails = ({ user }) => {
               <div className={styles.authorStarRatingDiv}>
                 <p>by {authorName[0]}</p>
                 {bookRatings !== null ?
-                  <BookRating  ratings={bookRatings} />
+                  <BookRating ratings={bookRatings} />
                   :
                   <Rating name="no-value" value={null} size="small" />
                 }
@@ -143,11 +143,15 @@ const BookDetails = ({ user }) => {
             <p>{bookDesc}</p>
           </div>
         </div>
-        <p>More from this author</p>
+
         {isCollected >= 0 ?
           <>
-            <p>This book is already in your bookshelf.</p>
-
+            <div className={styles.buttonDiv}>
+              <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
+              <div className={styles.inBookShelfDiv}>
+                <p>This book is already in your bookshelf.</p>
+              </div>
+            </div>
             <form onSubmit={handleAddBookToGroup}>
               <label htmlFor="group-input">Your Groups</label>
               <select
@@ -165,7 +169,10 @@ const BookDetails = ({ user }) => {
           </>
           :
           <>
-            <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+            <div className={styles.buttonDiv}>
+              <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
+              <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+            </div>
           </>
         }
 
