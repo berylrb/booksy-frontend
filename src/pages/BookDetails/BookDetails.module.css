@@ -1,7 +1,8 @@
 .detailsContainer {
   height: 100%;
   /* overflow-y: scroll; */
-
+  max-width: 100%;
+  overflow-x: hidden
 }
 
 
@@ -74,7 +75,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  margin: 20px 5px;
 }
 
 .moreAuthorButton {
@@ -90,6 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 8px;
 }
 
 .inBookShelfDiv {

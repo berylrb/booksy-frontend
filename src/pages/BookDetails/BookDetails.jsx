@@ -43,7 +43,7 @@ const BookDetails = ({ user }) => {
     return group.owner._id === id
   })
 
-  const bookDesc = bookDetails?.description ? bookDetails?.description : "No description available."
+  const bookDesc = bookDetails?.description.value ? bookDetails?.description.value : bookDetails?.description
 
   //get profile
   useEffect(() => {
