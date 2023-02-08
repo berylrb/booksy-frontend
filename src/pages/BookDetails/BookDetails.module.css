@@ -1,7 +1,8 @@
 .detailsContainer {
   height: 100%;
-  overflow-y: scroll;
-
+  /* overflow-y: scroll; */
+  max-width: 100%;
+  overflow-x: hidden
 }
 
 
@@ -14,7 +15,7 @@
 
 .bookDeetsImgDiv > img {
   width: 100%;
-  margin: -15px 0 0 0
+  margin: -25px 0 0 0
 }
 .titleAuthorSpan {
   display: flex;
@@ -50,15 +51,65 @@
 }
 
 
+.descriptionDiv {
+  margin: -50px 15px 5px 15px;
+
+}
+
 .descriptionDiv > h4 {
   font-weight: 300;
   font-size: .9em;
   letter-spacing: .9px;
-  margin: 30px 15px;
 }
 
 .descriptionDiv > p {
+  font-size: .7em;
+  letter-spacing: .7px;
+  margin-top: -10px;
+  line-height: 19px;
+  /* margin: -5px 15px 15px 15px; */
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 5px;
+}
+
+.moreAuthorButton {
+  width: 43%;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 5px;
+  border: none;
+  padding: 13px 0;
+  margin: 0 3px;
+  height: 50px;
+  color: #e4e1dc;
+  background-color: #3d405b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.inBookShelfDiv {
+  width: 43%;
+  background-color: #e4e1dc;
+  border-radius: 5px;
+  padding: 0 10px;
+  height: 50px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inBookShelfDiv > p {
   font-size: .85em;
-  margin: -20px 15px 15px 15px;
+  font-weight: 400;
+  text-align: center;
+  color: #676665;
 }
 

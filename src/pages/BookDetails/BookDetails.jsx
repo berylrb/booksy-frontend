@@ -43,7 +43,7 @@ const BookDetails = ({ user }) => {
     return group.owner._id === id
   })
 
-  const bookDesc = bookDetails?.description?.value ? bookDetails?.description.value : "No description available."
+  const bookDesc = bookDetails?.description.value ? bookDetails?.description.value : bookDetails?.description
 
   //get profile
   useEffect(() => {
@@ -53,6 +53,8 @@ const BookDetails = ({ user }) => {
     }
     fetchProfile()
   }, [id])
+
+  console.log(bookDetails, 'deets')
 
   //get rating details
   useEffect(() => {
@@ -104,7 +106,7 @@ const BookDetails = ({ user }) => {
   }
 
   const handleAddReview = async (reviewData) => {
-    const newReview = await bookService.createReview(savedBook._id, reviewData)
+    const newReview = await bookService.createReview(savedBook?._id, reviewData)
     setBookDetails({ ...bookDetails, reviews: [...savedBook.reviews, newReview] })
   }
 
@@ -112,7 +114,6 @@ const BookDetails = ({ user }) => {
     evt.preventDefault()
     const groupBook = await groupService.addBook(groupId, qKey)
   }
-
 
   if (!bookDetails) return <Loading />
 
@@ -142,11 +143,15 @@ const BookDetails = ({ user }) => {
             <p>{bookDesc}</p>
           </div>
         </div>
-        <p>More from this author</p>
+
         {isCollected >= 0 ?
           <>
-            <p>This book is already in your bookshelf.</p>
-
+            <div className={styles.buttonDiv}>
+              <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
+              <div className={styles.inBookShelfDiv}>
+                <p>This book is already in your bookshelf.</p>
+              </div>
+            </div>
             <form onSubmit={handleAddBookToGroup}>
               <label htmlFor="group-input">Your Groups</label>
               <select
@@ -164,7 +169,10 @@ const BookDetails = ({ user }) => {
           </>
           :
           <>
-            <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+            <div className={styles.buttonDiv}>
+              <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
+              <button onClick={handleSubmit} className={styles.addButton}>Add to Bookshelf</button>
+            </div>
           </>
         }
 
