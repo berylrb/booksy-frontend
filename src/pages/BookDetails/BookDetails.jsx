@@ -129,7 +129,7 @@ const BookDetails = ({ user }) => {
           <div className={styles.bookDeetsImgDiv}>
             <img src={bookImg} alt="book cover" />
           </div>
-          <BackButton path={path}/>
+          <BackButton path={path} buttonSubmit={buttonSubmit} />
           <header>
             <span className={styles.titleAuthorSpan}>
               <h1>{bookDetails.title}</h1>
@@ -156,14 +156,14 @@ const BookDetails = ({ user }) => {
 
         {isCollected >= 0 ?
           <>
-          <AccordionGroup handleChange={handleChange} userGroups={userGroups} handleAddBookToGroup={handleAddBookToGroup}/>
+            <AccordionGroup handleChange={handleChange} userGroups={userGroups} handleAddBookToGroup={handleAddBookToGroup} />
             <div className={styles.buttonDiv}>
               <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
               <div className={styles.inBookShelfDiv}>
                 <p>This book is already in your bookshelf.</p>
               </div>
             </div>
-           
+
           </>
           :
           <>

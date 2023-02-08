@@ -5,19 +5,21 @@
 }
 
 .backButton {
-  color: rgba(248, 247, 244, 0.692) ;
+  color: rgba(248, 247, 244, 0.855) ;
   height: 32px;
   width: 35px;
   box-shadow: 4px 2px 60px 20px rgb(29, 50, 50);
   padding: 0;
-  
-}
-
-.link {
   position: fixed;
   top: 35px;
   left: 20px;
   z-index: 10;
   cursor: pointer;
+  border-radius: 100%;
+  
+}
+
+.link {
+  
   
 }

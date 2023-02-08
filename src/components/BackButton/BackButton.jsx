@@ -12,9 +12,9 @@ const BackButton = (props) => {
 
   return (
     <>
-      <Link to={path} className={styles.link}>
-        <IoArrowBackCircle className={styles.backButton} />
-      </Link>
+      {/* <Link to={path} className={styles.link}> */}
+        <IoArrowBackCircle onClick={props.buttonSubmit} className={styles.backButton} />
+      {/* </Link> */}
     </>
   )
 
