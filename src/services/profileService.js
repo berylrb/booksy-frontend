@@ -46,15 +46,6 @@ const addBook = async (profileId, book) => {
   return res.json()
 }
 
-const removeBook = async (profileId, book) => {
-  const res = await fetch(`${BASE_URL}/${profileId}/books`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${tokenService.getToken()}`
-    },
-  })
-  return res.json()
-}
 
-export { getAllProfiles, addPhoto, addBook, show, removeBook }
+
+export { getAllProfiles, addPhoto, addBook, show }

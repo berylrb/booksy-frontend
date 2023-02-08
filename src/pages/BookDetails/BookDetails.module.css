@@ -93,9 +93,15 @@
   justify-content: center;
   align-items: center;
   margin-left: 5px;
+  box-shadow: 3px 4px 2px 0px #6d9196;
 }
 
-.inBookShelfDiv {
+.moreAuthorButton:active {
+  box-shadow: 1px 2px 2px 0px #6d9196;
+  background-color: #4b4f71;
+}
+
+.removeButton {
   width: 170px;
   background-color: #e4e1dc;
   border-radius: 5px;
@@ -105,14 +111,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 3px 4px 2px 0px #51686b;
 }
 
-.inBookShelfDiv > p {
-  font-size: .85em;
-  font-weight: 400;
-  text-align: center;
-  color: #676665;
+.removeButton:active {
+  box-shadow: 1px 2px 2px 0px #51686b;
+  background-color: #bab8b4;
 }
+
 
 .addButton {
   width: 173px;

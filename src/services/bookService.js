@@ -25,6 +25,17 @@ const show = async (qKey) => {
   }
 }
 
+const removeBook = async (qKey) => {
+  const res = await fetch(`${BASE_URL}/${qKey}/remove`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+  return res.json()
+}
+
 
 const bookSearch = async (formData) => {
   try {
@@ -93,5 +104,6 @@ export {
   findReviewsByKey,
   getRatings,
   createReview,
-  bookSearch
+  bookSearch,
+  removeBook
 }

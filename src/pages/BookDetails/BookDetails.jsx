@@ -45,10 +45,10 @@ const BookDetails = ({ user }) => {
   const path = '/books'
 
   const userGroups = groups.filter(group => {
-    return group.owner._id === id
+    return group?.owner?._id === id
   })
 
-  const bookDesc = bookDetails?.description.value ? bookDetails?.description.value : bookDetails?.description
+  const bookDesc = bookDetails?.description?.value ? bookDetails?.description?.value : bookDetails?.description
 
   //get profile
   useEffect(() => {
@@ -83,6 +83,13 @@ const BookDetails = ({ user }) => {
     fetchBook()
   }, [qKey])
 
+  const handleRemove = async (evt) => {
+    evt.preventDefault()
+    const prof = await bookService.removeBook(qKey)
+    // setBookDetails(prof)
+    setIsCollected(bookDetails.collectedByPerson?.includes(user.profile))
+    console.log(isCollected, 'help')
+  }
 
 
   const handleSubmit = async (evt) => {
@@ -154,13 +161,13 @@ const BookDetails = ({ user }) => {
           <AccordionReviews handleAddReview={handleAddReview} reviews={bookDetails.reviews} user={user} />
         </section>
 
-        {isCollected >= 0 ?
+        {isCollected ?
           <>
             <AccordionGroup handleChange={handleChange} userGroups={userGroups} handleAddBookToGroup={handleAddBookToGroup} />
             <div className={styles.buttonDiv}>
               <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
               <div className={styles.inBookShelfDiv}>
-                <p>This book is already in your bookshelf.</p>
+                <button onClick={handleRemove} className={styles.removeButton}>Remove from Bookshelf</button>
               </div>
             </div>
 
