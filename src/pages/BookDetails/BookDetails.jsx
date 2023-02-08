@@ -9,6 +9,7 @@ import Reviews from "../../components/Reviews/Reviews"
 import Rating from '@mui/material/Rating';
 import AccordionReviews from "../../components/AccordionReviews/AccordionReviews"
 import AccordionGroup from "../../components/AccordionGroup/AccordionGroup"
+import BackButton from "../../components/BackButton/BackButton"
 
 
 // Services
@@ -40,6 +41,8 @@ const BookDetails = ({ user }) => {
   const id = user.profile
 
   const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-L.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
+
+  const path = '/books'
 
   const userGroups = groups.filter(group => {
     return group.owner._id === id
@@ -126,6 +129,7 @@ const BookDetails = ({ user }) => {
           <div className={styles.bookDeetsImgDiv}>
             <img src={bookImg} alt="book cover" />
           </div>
+          <BackButton path={path}/>
           <header>
             <span className={styles.titleAuthorSpan}>
               <h1>{bookDetails.title}</h1>
