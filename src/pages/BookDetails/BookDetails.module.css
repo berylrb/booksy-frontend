@@ -50,15 +50,22 @@
 }
 
 
+.descriptionDiv {
+  margin: -50px 15px 5px 15px;
+
+}
+
 .descriptionDiv > h4 {
   font-weight: 300;
   font-size: .9em;
   letter-spacing: .9px;
-  margin: 30px 15px;
 }
 
 .descriptionDiv > p {
-  font-size: .85em;
-  margin: -20px 15px 15px 15px;
+  font-size: .7em;
+  letter-spacing: .7px;
+  margin-top: -10px;
+  line-height: 19px;
+  /* margin: -5px 15px 15px 15px; */
 }
 
