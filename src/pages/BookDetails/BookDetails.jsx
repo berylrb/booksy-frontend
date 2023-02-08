@@ -7,6 +7,7 @@ import BookRating from "../../components/BookRating/BookRating"
 import NewReview from "../../components/NewReview/NewReview"
 import Reviews from "../../components/Reviews/Reviews"
 import Rating from '@mui/material/Rating';
+import AccordionReviews from "../../components/AccordionReviews/AccordionReviews"
 
 
 // Services
@@ -144,6 +145,10 @@ const BookDetails = ({ user }) => {
           </div>
         </div>
 
+        <section className={styles.reviewSection}>
+          <AccordionReviews handleAddReview={handleAddReview} reviews={bookDetails.reviews} user={user} />
+        </section>
+
         {isCollected >= 0 ?
           <>
             <div className={styles.buttonDiv}>
@@ -175,12 +180,6 @@ const BookDetails = ({ user }) => {
             </div>
           </>
         }
-
-        <section className={styles.reviewSection}>
-          <h2>Reviews</h2>
-          <NewReview handleAddReview={handleAddReview} />
-          <Reviews reviews={bookDetails.reviews} user={user} />
-        </section>
         <button className={styles.backButton} onClick={buttonSubmit}>Go Back</button>
       </main>
     </>

@@ -1,0 +1,9 @@
+.typography {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+}
+
+.accordion {
+  box-shadow: none;
+  margin: 15px 0;
+}
