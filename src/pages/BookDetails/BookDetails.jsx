@@ -8,6 +8,7 @@ import NewReview from "../../components/NewReview/NewReview"
 import Reviews from "../../components/Reviews/Reviews"
 import Rating from '@mui/material/Rating';
 import AccordionReviews from "../../components/AccordionReviews/AccordionReviews"
+import AccordionGroup from "../../components/AccordionGroup/AccordionGroup"
 
 
 // Services
@@ -151,26 +152,14 @@ const BookDetails = ({ user }) => {
 
         {isCollected >= 0 ?
           <>
+          <AccordionGroup handleChange={handleChange} userGroups={userGroups} handleAddBookToGroup={handleAddBookToGroup}/>
             <div className={styles.buttonDiv}>
               <button className={styles.moreAuthorButton}>More from {authorName[0]}</button>
               <div className={styles.inBookShelfDiv}>
                 <p>This book is already in your bookshelf.</p>
               </div>
             </div>
-            <form onSubmit={handleAddBookToGroup}>
-              <label htmlFor="group-input">Your Groups</label>
-              <select
-                required
-                name="groupId"
-                id="group-id"
-                onChange={handleChange}
-              >
-                {userGroups.map(group =>
-                  <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
-                )}
-              </select>
-              <button>Suggest to Group</button>
-            </form>
+           
           </>
           :
           <>

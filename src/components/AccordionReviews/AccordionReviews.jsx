@@ -16,10 +16,11 @@ export default function AccordionReviews(props) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          className={styles.summary}
         >
           <Typography className={styles.typography}>Reviews</Typography>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className={styles.deets}>
           <NewReview handleAddReview={props.handleAddReview}/>
           <Reviews reviews={props.bookDetails?.reviews} user={props.user}/>
         </AccordionDetails>
