@@ -43,7 +43,7 @@ const BookDetails = ({ user }) => {
     return group.owner._id === id
   })
 
-  const bookDesc = bookDetails?.description?.value ? bookDetails?.description.value : "No description available."
+  const bookDesc = bookDetails?.description ? bookDetails?.description : "No description available."
 
   //get profile
   useEffect(() => {
@@ -53,6 +53,8 @@ const BookDetails = ({ user }) => {
     }
     fetchProfile()
   }, [id])
+
+  console.log(bookDetails, 'deets')
 
   //get rating details
   useEffect(() => {
@@ -104,7 +106,7 @@ const BookDetails = ({ user }) => {
   }
 
   const handleAddReview = async (reviewData) => {
-    const newReview = await bookService.createReview(savedBook._id, reviewData)
+    const newReview = await bookService.createReview(savedBook?._id, reviewData)
     setBookDetails({ ...bookDetails, reviews: [...savedBook.reviews, newReview] })
   }
 
@@ -112,7 +114,6 @@ const BookDetails = ({ user }) => {
     evt.preventDefault()
     const groupBook = await groupService.addBook(groupId, qKey)
   }
-
 
   if (!bookDetails) return <Loading />
 
