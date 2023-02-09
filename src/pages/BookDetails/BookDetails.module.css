@@ -1,6 +1,6 @@
 .detailsContainer {
   height: 100%;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   max-width: 100%;
   overflow-x: hidden
 }
