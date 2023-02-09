@@ -75,13 +75,11 @@ const BookDetails = ({ user }) => {
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
-
-      setIsCollected(data.collectedByPerson?.includes(user.profile))
-
+      setIsCollected(bookDetails?.collectedByPerson.includes(user.profile))
       setBookDetails(data)
     }
     fetchBook()
-  }, [qKey])
+  }, [qKey, isCollected])
 
   const handleRemove = async (evt) => {
     evt.preventDefault()
@@ -104,6 +102,7 @@ const BookDetails = ({ user }) => {
       reviews: [],
       description: bookDesc
     }
+    setIsCollected(bookDetails?.collectedByPerson.includes(user.profile))
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
   }
