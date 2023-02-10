@@ -1,6 +1,7 @@
 import styles from './NewGroup.module.css'
 import { useState } from 'react'
 import clouds from '../../assets/clouds.jpg'
+import Avatar, { genConfig } from 'react-nice-avatar'
 
 const NewGroup = (props) => {
   const [form, setForm] = useState({
@@ -24,6 +25,8 @@ const NewGroup = (props) => {
     e.preventDefault()
     props.handleAddGroup(form)
   }
+
+  const config = genConfig({ sex: "woman", hairStyle:"thick", hairColorRandom: true, noseStyle: "long"})
 
   return (
     <>
@@ -50,7 +53,7 @@ const NewGroup = (props) => {
             placeholder="Description"
             onChange={handleChange} />
 
-          <div className={styles.inputContainer}>
+          {/* <div className={styles.inputContainer}>
             <label htmlFor="photo-upload" className={styles.label}>
               Upload Photo
             </label>
@@ -60,9 +63,11 @@ const NewGroup = (props) => {
               name="photo"
               onChange={handleChangePhoto}
             />
-          </div>
+          </div> */}
           <button type="submit">SUBMIT</button>
         </form>
+
+        <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
       </main>
     </>
   );

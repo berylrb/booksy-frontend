@@ -1,7 +1,11 @@
 .groupListContainer {
   height: 100%;
-  margin: 10px 10px 0 15px;
-  width: 100%;
+  margin: 10px 2px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   /* overflow-x: hidden; */
 }
 
@@ -47,4 +51,39 @@
   /* font-style: italic; */
   color: rgb(87, 87, 87);
   margin: -5px 20px;
+}
+
+.bookCardsDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 100%;
+
+}
+
+.newGroupSection {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0;
+  width: 100%;
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  position: fixed;
+  bottom: 60px;
+}
+
+.buttonBox > button {
+  width: 80%;
+  height: 3em;
+  border: none;
+  border-radius: 50px;
 }

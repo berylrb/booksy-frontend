@@ -23,16 +23,6 @@ const GroupList = (props) => {
     setOpen(newOpen)
   }
 
-  const Puller = styled(Box)(({ theme }) => ({
-    width: 30,
-    height: 6,
-    backgroundColor: theme.palette.mode === 'light' ? grey[300] : grey[900],
-    borderRadius: 3,
-    position: 'absolute',
-    top: 8,
-    left: 'calc(50% - 15px)',
-  }));
-  
 
 
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -45,12 +35,13 @@ const GroupList = (props) => {
         <div className={styles.blH2Div}>
           <h2>Book Clubs</h2>
         </div>
-        {props.groups.map((group) => (
-          <GroupCard key={group._id} group={group} />
-        ))}
-
+        <div className={styles.bookCardsDiv}>
+          {props.groups.map((group) => (
+            <GroupCard key={group._id} group={group} />
+          ))}
+        </div>
         <section className={styles.newGroupSection}>
-          <Box>
+          <Box className={styles.buttonBox}>
             <button onClick={toggleDrawer(true)}>Add a Book Club</button>
           </Box>
           <SwipeableDrawer
@@ -64,11 +55,11 @@ const GroupList = (props) => {
             ModalProps={{ keepMounted: true }}
           >
             <Box className={styles.addGroupBox}>
-              <Puller />
-            </Box>
-            <NewGroup />
 
+              <NewGroup />
+            </Box>
           </SwipeableDrawer>
+
         </section>
       </main>
     </>
