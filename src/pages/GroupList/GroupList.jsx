@@ -24,8 +24,6 @@ const GroupList = (props) => {
   }
 
 
-
-  const container = window !== undefined ? () => window().document.body : undefined;
   return (
     <>
       <div className={styles.groupListHeaderDiv}>
@@ -45,7 +43,7 @@ const GroupList = (props) => {
             <button onClick={toggleDrawer(true)}>Add a Book Club</button>
           </Box>
           <SwipeableDrawer
-            container={container}
+            // container={container}
             anchor="bottom"
             open={open}
             onClose={toggleDrawer(false)}

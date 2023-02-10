@@ -67,7 +67,7 @@ const NewGroup = (props) => {
           <button type="submit">SUBMIT</button>
         </form>
 
-        <Avatar style={{ width: '8rem', height: '8rem' }} {...config} />
+        {/* <Avatar style={{ width: '8rem', height: '8rem' }} {...config} /> */}
       </main>
     </>
   );
