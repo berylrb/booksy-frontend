@@ -53,13 +53,13 @@ const Hamburger = (props) => {
                 Book Clubs
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link className={styles.link} to={`/groups/new`}
                 onClick={() => closeMenu()}
               >
                 Add a Book Club
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link className={styles.link} to={`/profiles/${props.user.profile}`}
                 onClick={() => closeMenu()}>
