@@ -28,7 +28,7 @@ export default function AccordionGroup(props) {
                 id="group-id"
                 onChange={props.handleChange}
               >
-                <option value="" selected="true" disabled="disabled">Your Groups</option>
+                <option value="" disabled="disabled">Your Groups</option>
                 {props.userGroups.map(group =>
                   <option value={group._id} placeholder={group.groupName}>{group.groupName}</option>
                 )}

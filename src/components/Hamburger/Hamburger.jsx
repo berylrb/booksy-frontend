@@ -50,14 +50,14 @@ const Hamburger = (props) => {
               <Link className={styles.link} to={`/groups`}
                 onClick={() => closeMenu()}
               >
-                Groups
+                Book Clubs
               </Link>
             </li>
             <li>
               <Link className={styles.link} to={`/groups/new`}
                 onClick={() => closeMenu()}
               >
-                Add a Group
+                Add a Book Club
               </Link>
             </li>
             <li>

@@ -1,11 +1,12 @@
 import styles from './NewGroup.module.css'
 import { useState } from 'react'
+import clouds from '../../assets/clouds.jpg'
 
 const NewGroup = (props) => {
   const [form, setForm] = useState({
     groupName: '',
     description: '',
-    imgUrl: 'https://cdn-icons-png.flaticon.com/512/8540/8540789.png',
+    imgUrl: 'https://images.unsplash.com/photo-1560803262-95a9de00a057?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   })
 
   const [photoData, setPhotoData] = useState({})
