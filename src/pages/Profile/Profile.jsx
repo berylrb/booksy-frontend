@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { useParams } from 'react-router-dom'
 import * as profileService from '../../services/profileService'
 import Bookshelf from '../../components/Bookshelf/Bookshelf'
+import Avatar, { genConfig } from 'react-nice-avatar'
 
 
 const Profile = ({ user }) => {
@@ -20,7 +21,9 @@ const Profile = ({ user }) => {
     fetchProfile()
   }, [id])
 
+  console.log(profile?.photo)
 
+  const avConfig = profile?.photo
 
   return (
     <>
@@ -29,7 +32,9 @@ const Profile = ({ user }) => {
           {user?.profile === profile?._id ?
             <>
               <p>My Profile</p>
-              <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" />
+              {/* <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" /> */}
+              <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
+
               <div className={styles.bookshelfDiv}>
                 <h4>My Bookshelf</h4>
                 <Bookshelf profile={profile} user={user} />

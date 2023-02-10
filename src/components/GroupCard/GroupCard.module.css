@@ -1,0 +1,83 @@
+.groupLink {
+  text-decoration: none;
+}
+
+.groupCardContainer {
+  width: 85%;
+  display: flex;
+  background-color: rgba(247, 246, 243, 0.846);
+  box-shadow: 4px 5px 5px #cfcecc;
+  border-radius: 7px;
+  padding: 20px 10px;
+  justify-content: flex-start;
+  height: 3.6em;
+  align-items: center;
+  margin: 20px;
+  border: .5px solid rgba(232, 228, 228, 0.606);
+}
+
+.groupCardContainer:active {
+  background-color: rgba(221, 220, 218, 0.846);
+  box-shadow: 2px 2px 5px #b2b1af;
+}
+
+
+.imgDiv {
+  height: 75px;
+  width: 75px;
+  border: 1px solid rgba(209, 209, 209, 0.775);
+  display: flex;
+  object-fit: contain;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+
+.imgDiv > img {
+  height: 100px;
+  width: 100px;
+}
+
+.groupTextDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 0 5px;
+  padding: 15px 5px;
+  height: 100%;
+}
+
+.groupNameH2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #0a0f34;
+  letter-spacing: 1px;
+  margin: 0;
+  font-size: 1em;
+}
+
+.groupTextDiv > p {
+  margin: 0;
+  font-size: .8em;
+  color: #0a0f34;
+}
+
+.groupPDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 15px 0 0 0;
+}
+
+.groupPDiv > p {
+  margin: 0;
+  font-size: .7em;
+  color: #0a0f34;
+}
+
+.picNameSpan {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+}
