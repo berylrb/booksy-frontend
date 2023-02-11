@@ -78,11 +78,13 @@ const BookDetails = ({ user }) => {
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
-      setIsCollected(bookDetails?.collectedByPerson?.includes(user.profile))
+
+
       setBookDetails(data)
     }
     fetchBook()
-  }, [qKey, isCollected])
+  }, [isCollected])
+
 
   const handleRemove = async (evt) => {
     evt.preventDefault()
@@ -108,6 +110,7 @@ const BookDetails = ({ user }) => {
     setIsCollected(bookDetails?.collectedByPerson?.includes(user.profile))
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
+    setIsCollected(bookDetails.collectedByPerson?.includes(user.profile))
   }
 
   const handleChange = ({ target }) => {
