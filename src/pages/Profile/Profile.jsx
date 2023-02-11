@@ -32,7 +32,6 @@ const Profile = ({ user }) => {
           {user?.profile === profile?._id ?
             <>
               <p>My Profile</p>
-              {/* <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" /> */}
               <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
 
               <div className={styles.bookshelfDiv}>
@@ -43,7 +42,7 @@ const Profile = ({ user }) => {
             :
             <>
               <p>{profile?.name}'s Profile</p>
-              <img className={styles.profileImg} src={profile?.photo} alt="my profile pic" />
+              <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
               <div className={styles.bookshelfDiv}>
                 <h4>{profile?.name}'s Bookshelf</h4>
                 {savedBookCheck > 0 ?
