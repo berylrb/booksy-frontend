@@ -54,7 +54,7 @@ const GroupList = (props) => {
           >
             <Box className={styles.addGroupBox}>
 
-              <NewGroup />
+              <NewGroup handleAddGroup={props.handleAddGroup}/>
             </Box>
           </SwipeableDrawer>
 
