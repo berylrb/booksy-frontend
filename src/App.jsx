@@ -146,7 +146,7 @@ const App = () => {
           path="/groups"
           element={
             <ProtectedRoute user={user}>
-              <GroupList groups={groups} />
+              <GroupList groups={groups} handleAddGroup={handleAddGroup} />
             </ProtectedRoute>
           }
         />
