@@ -1,4 +1,4 @@
-.groupListContainer {
+.profListContainer {
   height: 100%;
   margin: 10px 2px;
   max-width: 100%;
@@ -9,15 +9,13 @@
   /* overflow-x: hidden; */
 }
 
-
-.groupListContainer > h3 {
+.profListContainer > h3 {
   font-weight: 500;
   font-size: 1.2em;
   color: #0a0f34;
 }
 
-
-.groupListHeaderDiv {
+.profListHeaderDiv {
   min-height: 70px;
   background-color: rgba(47, 79, 79, 0);
   min-width: 100%;
@@ -30,7 +28,7 @@
   letter-spacing: 1.2px;
 }
 
-.groupListHeaderDiv > h4 {
+.profListHeaderDiv > h4 {
   color: #dfd8cf;
   font-weight: 300;
   font-family: 'Shrikhand', cursive;
@@ -53,37 +51,11 @@
   margin: -5px 20px;
 }
 
-.bookCardsDiv {
+.profCardsDiv {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   /* align-items: center; */
   width: 100%;
 
-}
-
-.newGroupSection {
-  border: 1px solid red;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 0;
-  width: 100%;
-}
-
-.buttonBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  width: 100%;
-  position: fixed;
-  bottom: 60px;
-}
-
-.buttonBox > button {
-  width: 80%;
-  height: 3em;
-  border: none;
-  border-radius: 50px;
 }

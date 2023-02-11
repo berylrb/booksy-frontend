@@ -27,12 +27,13 @@ const BookDetails = ({ user }) => {
   const [savedBook, setSavedBook] = useState()
   const [bookRatings, setBookRatings] = useState(null)
   const [profile, setProfile] = useState()
-  const [isCollected, setIsCollected] = useState(null)
+  const [isCollected, setIsCollected] = useState(false)
   const [groupId, setGroupId] = useState()
 
 
+  const collected = bookDetails?.collectedByPerson?.includes(user.profile)
 
-
+  console.log(collected)
   //location & params variables
   const { imgKey } = location.state
   const { authorName } = location.state
@@ -71,21 +72,25 @@ const BookDetails = ({ user }) => {
   }, [qKey])
 
 
+
+
   //get book details
   useEffect(() => {
     const fetchBook = async () => {
       const data = await bookService.show(qKey)
+
 
       setBookDetails(data)
     }
     fetchBook()
   }, [isCollected])
 
+
   const handleRemove = async (evt) => {
     evt.preventDefault()
     const prof = await bookService.removeBook(qKey)
     // setBookDetails(prof)
-    setIsCollected(bookDetails.collectedByPerson?.includes(user.profile))
+    setIsCollected(bookDetails?.collectedByPerson?.includes(user.profile))
     console.log(isCollected, 'help')
   }
 
@@ -102,6 +107,7 @@ const BookDetails = ({ user }) => {
       reviews: [],
       description: bookDesc
     }
+    setIsCollected(bookDetails?.collectedByPerson?.includes(user.profile))
     const book = await profileService.addBook(user.profile, formData)
     setSavedBook(book)
     setIsCollected(bookDetails.collectedByPerson?.includes(user.profile))
