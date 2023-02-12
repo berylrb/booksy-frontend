@@ -29,12 +29,7 @@ const Profiles = () => {
           <>
             <div className={styles.profCardsDiv}>
               {profiles.map(profile =>
-                <Link
-                  key={profile._id}
-                  to={`/profiles/${profile._id}`}
-                >
-                  <ProfileCard profile={profile} />
-                </Link>
+                <ProfileCard profile={profile} />
               )}
             </div>
           </>

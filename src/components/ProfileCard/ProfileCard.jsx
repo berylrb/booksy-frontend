@@ -6,15 +6,16 @@ const ProfileCard = ({ profile }) => {
   const avConfig = profile?.photo
   return (
     <>
-      <Link className={styles.profileLink} to={`/profiles/${profile._id}`} >
+      <Link className={styles.profileLink}
+      style={{textDecoration: 'none'}} to={`/profiles/${profile._id}`} >
         <article className={styles.profCardContainer}>
+          <div className={styles.colorBlock}></div>
           <span className={styles.picNameSpan}>
-
             <div className={styles.imgDiv}>
               <Avatar style={{ width: '5rem', height: '5rem' }} {...avConfig} />
             </div>
             <div className={styles.profTextDiv}>
-              <h2 className={styles.profNameH2}>{profile.name}</h2>
+              <div className={styles.profNameH2}>{profile.name}</div>
             </div>
           </span>
         </article>
