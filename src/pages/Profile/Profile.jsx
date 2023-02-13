@@ -25,6 +25,8 @@ const Profile = ({ user }) => {
 
   const avConfig = profile?.photo
 
+  if (!profile) return "Loading..."
+
   return (
     <>
       <main className={styles.profileMain}>

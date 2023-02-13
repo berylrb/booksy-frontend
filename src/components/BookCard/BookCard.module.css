@@ -21,8 +21,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 7em;
-  height: 10em;
+  width: 7.5em;
+  height: 11em;
   overflow: hidden;
   object-fit: cover;
   margin: 13px 10px 0 10px;
@@ -32,8 +32,8 @@
 }
 
 .bookCoverDiv > img {
-  width: 7em;
-  height: 10em;
+  width: 7.5em;
+  height: 11em;
   
 }
 .link {

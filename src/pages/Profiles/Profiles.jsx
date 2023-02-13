@@ -18,12 +18,12 @@ const Profiles = () => {
 
   return (
     <>
-      <div className={styles.profListHeaderDiv}>
+      {/* <div className={styles.profListHeaderDiv}>
         <h4>Booksy</h4>
-      </div>
+      </div> */}
       <main className={styles.profListContainer}>
         <div className={styles.blH2Div}>
-          <h2>Profiles</h2>
+          <h2>PROFILES</h2>
         </div>
         {profiles.length ?
           <>
