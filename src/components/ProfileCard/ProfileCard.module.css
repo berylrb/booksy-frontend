@@ -1,18 +1,19 @@
 .profileLink {
   text-decoration: none !important;
+  /* width: 40%; */
 }
 
+
 .profCardContainer {
-  width: 85%;
+  width: 130px;
   display: flex;
-  background-color: rgba(247, 246, 243, 0.846);
-  box-shadow: 4px 5px 5px #cfcecc;
+  box-shadow: 2px 3px 4px #cfcecc;
   border-radius: 7px;
   padding: 20px 10px;
-  justify-content: flex-start;
-  height: 3.6em;
+  justify-content: center;
+  height: 9.6em;
   align-items: center;
-  margin: 20px;
+  margin: 20px 15px;
   border: .5px solid rgba(232, 228, 228, 0.606);
 }
 
@@ -30,27 +31,32 @@
   object-fit: contain;
   overflow: hidden;
   border-radius: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .imgDiv:first-child {
   height: 5rem;
   width: 5rem;
+  margin-bottom: 10px;
 }
 
 .profTextDiv {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 0 0 5px;
   padding: 15px 5px;
-  height: 100%;
+  width: 100%;
+  align-items: center;
 }
 
 .profNameH2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   color: #0a0f34;
+  padding: 2px;
   letter-spacing: 1px;
   margin: 0;
   font-size: 1em;
@@ -59,7 +65,18 @@
 
 .picNameSpan {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 0;
 }
+
+
+/* .colorBlock {
+  height: 95px;
+  background-color: yellow;
+  width: 100%;
+
+  top: 0;
+  z-index: -1;
+} */
