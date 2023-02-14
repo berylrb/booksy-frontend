@@ -1,28 +1,29 @@
 import styles from './CustomizeAvatarForm.module.css'
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Avatar, { genConfig } from 'react-nice-avatar'
+import { Navigate } from 'react-router-dom'
 
 const CustomizeAvatarForm = (props) => {
-  const { state } = useLocation()
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     shape: 'circle',
-    sex: props.profile.photo.sex,
-    faceColor: props.profile.photo.faceColor,
-    hairColor: props.profile.photo.hairColor,
-    hairStyle: props.profile.photo.hairStyle,
-    hatStyle: props.profile.photo.hatStyle,
-    hatColor: props.profile.photo.hatColor,
-    eyeStyle: props.profile.photo.eyeStyle,
-    glassesStyle: props.profile.photo.glassesStyle,
-    mouthStyle: props.profile.photo.mouthStyle,
-    shirtStyle: props.profile.photo.shirtStyle,
-    shirtColor: props.profile.photo.shirtColor,
-    bgColor: props.profile.photo.bgColor,
-    noseStyle: props.profile.photo.noseStyle,
+    sex: props.profile?.photo?.sex,
+    faceColor: props.profile?.photo?.faceColor,
+    hairColor: props.profile?.photo?.hairColor,
+    hairStyle: props.profile?.photo?.hairStyle,
+    hatStyle: props.profile?.photo?.hatStyle,
+    hatColor: props.profile?.photo?.hatColor,
+    eyeStyle: props.profile?.photo?.eyeStyle,
+    glassesStyle: props.profile?.photo?.glassesStyle,
+    mouthStyle: props.profile?.photo?.mouthStyle,
+    shirtStyle: props.profile?.photo?.shirtStyle,
+    shirtColor: props.profile?.photo?.shirtColor,
+    bgColor: props.profile?.photo?.bgColor,
+    noseStyle: props.profile?.photo?.noseStyle,
     isGradient: false,
-    eyeBrowStyle: props.profile.photo.eyeBrowStyle,
-    earSize: props.profile.photo.earSize
+    eyeBrowStyle: props.profile?.photo?.eyeBrowStyle,
+    earSize: props.profile?.photo?.earSize
   })
 
   const handleChange = ({ target }) => {
@@ -36,6 +37,7 @@ const CustomizeAvatarForm = (props) => {
     e.preventDefault()
     try {
       props.handleUpdateProfile(form, props.profile)
+      navigate(`/profiles/${props.profile._id}`)
     } catch (error) {
       console.log(error)
     }

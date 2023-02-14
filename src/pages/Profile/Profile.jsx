@@ -42,9 +42,6 @@ const Profile = ({ user }) => {
             <>
               <p>My Profile</p>
               <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
-              <Link to='/edit-avatar' className={styles.avatarLink}>
-              <button>Edit Avatar</button>
-              </Link>
 
               <div className={styles.bookshelfDiv}>
                 <h4>My Bookshelf</h4>
