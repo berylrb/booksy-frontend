@@ -3,6 +3,8 @@ import * as profileService from '../../services/profileService'
 import { Link } from 'react-router-dom'
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import styles from './Profiles.module.css'
+import { Carousel } from '@trendyol-js/react-carousel';
+import { ScrollingCarousel } from '@trendyol-js/react-carousel';
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
@@ -16,6 +18,7 @@ const Profiles = () => {
   }, [])
 
 
+
   return (
     <>
       {/* <div className={styles.profListHeaderDiv}>
@@ -25,17 +28,25 @@ const Profiles = () => {
         <div className={styles.blH2Div}>
           <h2>PROFILES</h2>
         </div>
+        <div className={styles.communityTextDiv}>
+          <h3>Booksy Community:</h3>
+        </div>
         {profiles.length ?
           <>
+            {/* <ScrollingCarousel show={2.5} slide={2} swiping={true}> */}
             <div className={styles.profCardsDiv}>
               {profiles.map(profile =>
                 <ProfileCard profile={profile} />
               )}
             </div>
+            {/* </ScrollingCarousel> */}
           </>
           :
           <p>No profiles yet</p>
         }
+        <section className={styles.friendList}>
+          <h3 className={styles.friendsH3}>Your Friends:</h3>
+        </section>
       </main>
     </>
   )

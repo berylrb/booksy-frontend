@@ -25,6 +25,18 @@ const show = async (qKey) => {
   }
 }
 
+const getSubject = async (subject) => {
+  try {
+    console.log(subject)
+    const res = await fetch(`${BASE_URL}/${subject}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const removeBook = async (qKey) => {
   const res = await fetch(`${BASE_URL}/${qKey}/remove`, {
     method: 'PUT',
@@ -105,5 +117,6 @@ export {
   getRatings,
   createReview,
   bookSearch,
-  removeBook
+  removeBook,
+  getSubject
 }

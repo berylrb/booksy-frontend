@@ -5,15 +5,16 @@
 
 
 .profCardContainer {
-  width: 130px;
+  width: 125px;
   display: flex;
-  box-shadow: 2px 3px 4px #cfcecc;
+  /* box-shadow: 2px 3px 4px #cfcecc;*/
+  box-shadow: 0px 10px 11px -8px rgba(189, 188, 178, 0.424);
   border-radius: 7px;
-  padding: 20px 10px;
+  padding: 10px 4px;
   justify-content: center;
-  height: 9.6em;
+  height: 8.6em;
   align-items: center;
-  margin: 20px 15px;
+  margin: 20px 22px;
   border: .5px solid rgba(232, 228, 228, 0.606);
 }
 
@@ -21,11 +22,12 @@
 .profCardContainer:active {
   background-color: rgba(221, 220, 218, 0.846);
   box-shadow: 2px 2px 5px #b2b1af;
+  /* color: rgb(255, 253, 248) */
 }
 
 .imgDiv {
-  height: 75px;
-  width: 75px;
+  height: 65px;
+  width: 65px;
   border: 1px solid rgba(209, 209, 209, 0.775);
   display: flex;
   object-fit: contain;
@@ -33,21 +35,23 @@
   border-radius: 50px;
   justify-content: center;
   align-items: center;
+  /* margin: 20px 0 15px 0; */
 }
 
 
 .imgDiv:first-child {
-  height: 5rem;
-  width: 5rem;
-  margin-bottom: 10px;
+  height: 4.8rem;
+  width: 4.8rem;
+  margin: 25px 0 5px 0;
+  /* margin-bottom: 10px; */
 }
 
 .profTextDiv {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0 0 0 5px;
-  padding: 15px 5px;
+  justify-content: flex-end;
+  margin: 5px 0;
+  padding: 20px 5px;
   width: 100%;
   align-items: center;
 }
@@ -59,14 +63,19 @@
   padding: 2px;
   letter-spacing: 1px;
   margin: 0;
-  font-size: 1em;
+  font-size: .8em;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .picNameSpan {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 0;
 }
