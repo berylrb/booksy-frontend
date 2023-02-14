@@ -17,6 +17,7 @@ import NewGroup from './pages/NewGroup/NewGroup'
 import EditGroup from './pages/EditGroup/EditGroup'
 import BookSearch from './pages/BookSearch/BookSearch'
 import Hamburger from './components/Hamburger/Hamburger'
+import Subject from './pages/Subject/Subject'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -67,7 +68,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
-      setBooks(data.works)
+      setBooks(data?.works)
     }
     if (user) fetchAllBooks()
   }, [user])
@@ -123,6 +124,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <BookList books={books} groups={groups} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/books/subjects/:subject"
+          element={
+            <ProtectedRoute user={user}>
+              <Subject user={user} />
             </ProtectedRoute>
           }
         />

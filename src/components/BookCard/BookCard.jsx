@@ -7,12 +7,13 @@ import * as bookService from '../../services/bookService'
 // import Icon from "../Icon/Icon"
 // import AuthorInfo from "../AuthorInfo/AuthorInfo"
 
-const BookCard = ({ book, groups }) => {
+const BookCard = ({ book, groups, author }) => {
   const bookTitle = book.title
-  const authorName = book.author_name
+  const authorName = book.author_name ? book.author_name : [author]
   const qKey = book.key.split('s/')[1]
   const imgKey = book.lending_edition_s ? book.lending_edition_s : book.cover_edition_key
 
+  console.log(authorName, 'author')
 
   const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-M.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
