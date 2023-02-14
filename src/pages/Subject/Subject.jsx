@@ -10,6 +10,7 @@ const Subject = (props) => {
   const subject = useParams()
   const [subjBooks, setSubjBooks] = useState(null)
 
+
   useEffect(() => {
     const fetchSubjBooks = async () => {
       const data = await bookService.getSubject(subject.subject)
@@ -19,7 +20,7 @@ const Subject = (props) => {
     fetchSubjBooks()
   }, [subject.subject])
 
-
+console.log(subjBooks)
 
   if (!subjBooks) return 'Loading...'
   return (
@@ -27,7 +28,7 @@ const Subject = (props) => {
       <div className={styles.subjBooksDiv}>
         <ScrollingCarousel show={3} slide={2} swiping={true} useArrowKeys={true} responsive={true}>
           {subjBooks?.map(book => (
-            <BookCard key={book.key.split('s/')[1]} book={book} />
+            <BookCard key={book.key.split('s/')[1]} book={book} author={book.authors[0].name}/>
           ))}
         </ScrollingCarousel>
       </div>

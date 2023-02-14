@@ -128,7 +128,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/subjects/autobiographies' className={styles.subjectLink}>
+        {/* <Link to='/books/subjects/autobiographies' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -140,7 +140,7 @@ const SubjectLinks = () => {
               </div>
             </span>
           </article>
-        </Link>
+        </Link> */}
       </div>
     </>
   );

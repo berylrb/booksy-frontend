@@ -43,9 +43,10 @@ const BookDetails = ({ user }) => {
 
   const bookImg = imgKey ? `https://covers.openlibrary.org/b/olid/${imgKey}-L.jpg` : `https://cdn-icons-png.flaticon.com/512/277/277938.png`
 
+  console.log(authorName, 'auth')
   const path = '/books'
 
-  const userGroups = groups.filter(group => {
+  const userGroups = groups?.filter(group => {
     return group?.owner?._id === id
   })
 

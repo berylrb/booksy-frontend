@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+.subjectLink {
+  text-decoration: none;
+}
+
 .carousel {
   background-color:#41a491;
   height: 40%;
@@ -18,6 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .imgDiv {
@@ -38,5 +43,13 @@
   padding: 2px;
   letter-spacing: 1px;
   margin: 0;
-  font-size: .8em;
+  font-size: .9em;
+  text-align: center;
+}
+
+.picNameSpan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
