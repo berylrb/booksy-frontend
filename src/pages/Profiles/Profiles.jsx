@@ -36,7 +36,7 @@ const Profiles = () => {
             {/* <ScrollingCarousel show={2.5} slide={2} swiping={true}> */}
             <div className={styles.profCardsDiv}>
               {profiles.map(profile =>
-                <ProfileCard profile={profile} />
+                <ProfileCard  key={profile._id} profile={profile} />
               )}
             </div>
             {/* </ScrollingCarousel> */}
