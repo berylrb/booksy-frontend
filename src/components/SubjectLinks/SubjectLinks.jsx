@@ -6,7 +6,7 @@ const SubjectLinks = () => {
   return (
     <>
       <div className={styles.subjectCardsDiv}>
-        <Link to='/books/fantasy' className={styles.subjectLink}>
+        <Link to='/books/subjects/fantasy' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -20,7 +20,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/science_fiction' className={styles.subjectLink}>
+        <Link to='/books/subjects/science_fiction' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -34,7 +34,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/adventure' className={styles.subjectLink}>
+        <Link to='/books/subjects/adventure' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -48,7 +48,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/romance' className={styles.subjectLink}>
+        <Link to='/books/subjects/romance' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -62,7 +62,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/mystery_and_detective_stories' className={styles.subjectLink}>
+        <Link to='/books/subjects/mystery_and_detective_stories' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -76,7 +76,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/young_adult' className={styles.subjectLink}>
+        <Link to='/books/subjects/young_adult' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -90,7 +90,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/thriller' className={styles.subjectLink}>
+        <Link to='/books/subjects/thriller' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -104,7 +104,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/historical_fiction' className={styles.subjectLink}>
+        <Link to='/books/subjects/historical_fiction' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>
@@ -118,7 +118,7 @@ const SubjectLinks = () => {
           </article>
         </Link>
 
-        <Link to='/books/autobiographies' className={styles.subjectLink}>
+        <Link to='/books/subjects/autobiographies' className={styles.subjectLink}>
           <article
             className={styles.subjCardContainer}>
             <span className={styles.picNameSpan}>

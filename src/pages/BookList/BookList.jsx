@@ -14,7 +14,7 @@ const BookList = (props) => {
           <h2>Trending Books</h2>
         </div>
         <div className={styles.bookCardsWrapper}>
-          <ScrollingCarousel show={2.5} slide={2} swiping={true} useArrowKeys={true} responsive={true}>
+          <ScrollingCarousel show={3} slide={2} swiping={true} useArrowKeys={true} responsive={true}>
           {props.books.map((book, idx) => (
             <BookCard key={book.key.split('s/')[1]} book={book} groups={props.groups} />
           ))}

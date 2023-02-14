@@ -71,7 +71,7 @@ const BookDetails = ({ user }) => {
     ratingData()
   }, [qKey])
 
-
+console.log(qKey, 'qkey')
 
 
   //get book details

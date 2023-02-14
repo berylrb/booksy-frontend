@@ -28,7 +28,7 @@ const show = async (qKey) => {
 const getSubject = async (subject) => {
   try {
     console.log(subject)
-    const res = await fetch(`${BASE_URL}/${subject}`, {
+    const res = await fetch(`${BASE_URL}/subjects/${subject}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return res.json()

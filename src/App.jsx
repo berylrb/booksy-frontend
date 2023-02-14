@@ -68,7 +68,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       const data = await bookService.index()
-      setBooks(data.works)
+      setBooks(data?.works)
     }
     if (user) fetchAllBooks()
   }, [user])
@@ -128,7 +128,7 @@ const App = () => {
           }
         />
         <Route
-          path="/books/:subject"
+          path="/books/subjects/:subject"
           element={
             <ProtectedRoute user={user}>
               <Subject user={user} />
