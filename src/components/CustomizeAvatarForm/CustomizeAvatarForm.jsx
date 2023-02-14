@@ -30,9 +30,9 @@ const CustomizeAvatarForm = (props) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
-  
 
-  
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     try {
@@ -42,234 +42,276 @@ const CustomizeAvatarForm = (props) => {
       console.log(error)
     }
   }
-  
+
   const avConfig = genConfig(form)
 
   return (
     <>
-      <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="skin-color-input">Skin Color</label>
-        <input
-          name="faceColor"
-          id="face-color-input"
-          value={form.faceColor}
-          type="color"
-          onChange={handleChange}
-        />
-        <label htmlFor="group-name-input">Hair Color</label>
-        <input
-          name="hairColor"
-          id="hair-color-input"
-          value={form.hairColor}
-          type="color"
-          onChange={handleChange}
-        />
-        <label htmlFor="group-name-input">Hair Style</label>
-        <select
-          name="hairStyle"
-          id="hair-style-input"
-          onChange={handleChange}
-          value={form.hairStyle}
-        >
-          <option
-            value='thick'
-          >
-            Crew Cut
-          </option>
-          <option
-            value='normal'
-          >
-            Mullet
-          </option>
-          <option
-            value='womanShort'
-          >
-            Shoulder Length
-          </option>
-          <option
-            value='womanLong'
-          >
-            Long
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Head Wear</label>
-        <select
-          name="hatStyle"
-          id="hat-style-input"
-          onChange={handleChange}
-          value={form.hatStyle}
-        >
-          <option
-            value='none'
-          >
-            None
-          </option>
-          <option
-            value='turban'
-          >
-            Turban
-          </option>
-          <option
-            value='beanie'
-          >
-            Beanie
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Head Wear Color</label>
-        <input
-          name="hatColor"
-          id="hat-color-input"
-          onChange={handleChange}
-          value={form.hatColor}
-          type='color'
-        />
-        <label htmlFor="eyebrow-input">Eyelashes</label>
-        <select
-          name="eyeBrowStyle"
-          id="eyebrow-input"
-          onChange={handleChange}
-          value={form.eyeBrowStyle}
-        >
-          <option
-            value='up'
-          >
-            No
-          </option>
-          <option
-            value='upWoman'
-          >
-            Yes
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Eye Style</label>
-        <select
-          name="eyeStyle"
-          id="eye-style-input"
-          onChange={handleChange}
-          value={form.eyeStyle}
-        >
-          <option
-            value='smile'
-          >
-            Smiling
-          </option>
-          <option
-            value='oval'
-          >
-            Oval
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Glasses</label>
-        <select
-          name="glassesStyle"
-          id="glasses-style-input"
-          onChange={handleChange}
-          value={form.glassesStyle}
-        >
-          <option
-            value='none'
-          >
-            None
-          </option>
-          <option
-            value='round'
-          >
-            Round
-          </option>
-          <option
-            value='square'
-          >
-            Square
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Mouth Style</label>
-        <select
-          name="mouthStyle"
-          id="moyth-style-input"
-          onChange={handleChange}
-          value={form.mouthStyle}
-        >
-          <option
-            value='laugh'
-          >
-            Laughing
-          </option>
-          <option
-            value='smile'
-          >
-            Smiling
-          </option>
-          <option
-            value='peace'
-          >
-            Gentle Smile
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Nose Style</label>
-        <select
-          name="noseStyle"
-          id="nose-style-input"
-          onChange={handleChange}
-          value={form.noseStyle}
-        >
-          <option
-            value='short'
-          >
-            Short
-          </option>
-          <option
-            value='round'
-          >
-            Round
-          </option>
-          <option
-            value='long'
-          >
-            Long
-          </option>
-        </select>
-        <label htmlFor="group-name-input">Shirt Style</label>
-        <select
-          name="shirtStyle"
-          id="hat-style-input"
-          onChange={handleChange}
-          value={form.shirtStyle}
-        >
-          <option
-            value='hoody'
-          >
-            Hoodie
-          </option>
-          <option
-            value='short'
-          >
-            T-Shirt
-          </option>
-          <option
-            value='polo'
-          >
-            Polo
-          </option>
-        </select>
-        <label htmlFor="shirt-color-input">Shirt Color</label>
-        <input
-          name="shirtColor"
-          id="shirt-color-input"
-          value={form.shirtColor}
-          type="color"
-          onChange={handleChange}
-        />
-        <label htmlFor="bg-color-input">Background Color</label>
-        <input
-          name="bgColor"
-          id="bg-color-input"
-          value={form.bgColor}
-          type="color"
-          onChange={handleChange}
-        />
-        <button type="submit">SUBMIT</button>
-      </form>
+      <div className={styles.formDiv}>
+        <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
+        <form className={styles.avatarForm} onSubmit={handleSubmit}>
+          <div className={styles.avatarFormDiv}>
+            <div className={styles.inputDiv}>
+              <label htmlFor="skin-color-input">Skin Color</label>
+              <input
+                name="faceColor"
+                id="face-color-input"
+                value={form.faceColor}
+                type="color"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Hair Color</label>
+              <input
+                name="hairColor"
+                id="hair-color-input"
+                value={form.hairColor}
+                type="color"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Hair Style</label>
+              <select
+                name="hairStyle"
+                id="hair-style-input"
+                onChange={handleChange}
+                value={form.hairStyle}
+              >
+                <option
+                  value='thick'
+                >
+                  Crew Cut
+                </option>
+                <option
+                  value='normal'
+                >
+                  Mullet
+                </option>
+                <option
+                  value='womanShort'
+                >
+                  Shoulder Length
+                </option>
+                <option
+                  value='womanLong'
+                >
+                  Long
+                </option>
+              </select>
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Head Wear</label>
+              <select
+                name="hatStyle"
+                id="hat-style-input"
+                onChange={handleChange}
+                value={form.hatStyle}
+              >
+                <option
+                  value='none'
+                >
+                  None
+                </option>
+                <option
+                  value='turban'
+                >
+                  Turban
+                </option>
+                <option
+                  value='beanie'
+                >
+                  Beanie
+                </option>
+              </select>
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Head Wear Color</label>
+              <input
+                name="hatColor"
+                id="hat-color-input"
+                onChange={handleChange}
+                value={form.hatColor}
+                type='color'
+              />
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="eyebrow-input">Eyelashes</label>
+              <select
+                name="eyeBrowStyle"
+                id="eyebrow-input"
+                onChange={handleChange}
+                value={form.eyeBrowStyle}
+              >
+                <option
+                  value='up'
+                >
+                  No
+                </option>
+                <option
+                  value='upWoman'
+                >
+                  Yes
+                </option>
+              </select>
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Eye Style</label>
+              <select
+                name="eyeStyle"
+                id="eye-style-input"
+                onChange={handleChange}
+                value={form.eyeStyle}
+              >
+                <option
+                  value='smile'
+                >
+                  Smiling
+                </option>
+                <option
+                  value='oval'
+                >
+                  Oval
+                </option>
+              </select>
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Glasses</label>
+              <select
+                name="glassesStyle"
+                id="glasses-style-input"
+                onChange={handleChange}
+                value={form.glassesStyle}
+              >
+                <option
+                  value='none'
+                >
+                  None
+                </option>
+                <option
+                  value='round'
+                >
+                  Round
+                </option>
+                <option
+                  value='square'
+                >
+                  Square
+                </option>
+              </select>
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Mouth Style</label>
+              <select
+                name="mouthStyle"
+                id="moyth-style-input"
+                onChange={handleChange}
+                value={form.mouthStyle}
+              >
+                <option
+                  value='laugh'
+                >
+                  Laughing
+                </option>
+                <option
+                  value='smile'
+                >
+                  Smiling
+                </option>
+                <option
+                  value='peace'
+                >
+                  Gentle Smile
+                </option>
+              </select>
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Nose Style</label>
+              <select
+                name="noseStyle"
+                id="nose-style-input"
+                onChange={handleChange}
+                value={form.noseStyle}
+              >
+                <option
+                  value='short'
+                >
+                  Short
+                </option>
+                <option
+                  value='round'
+                >
+                  Round
+                </option>
+                <option
+                  value='long'
+                >
+                  Long
+                </option>
+              </select>
+            </div>
+
+            {/* <div className={styles.inputDiv}>
+              <label htmlFor="group-name-input">Shirt Style</label>
+              <select
+                name="shirtStyle"
+                id="hat-style-input"
+                onChange={handleChange}
+                value={form.shirtStyle}
+              >
+                <option
+                  value='hoody'
+                >
+                  Hoodie
+                </option>
+                <option
+                  value='short'
+                >
+                  T-Shirt
+                </option>
+                <option
+                  value='polo'
+                >
+                  Polo
+                </option>
+              </select>
+            </div> */}
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="shirt-color-input">Shirt Color</label>
+              <input
+                name="shirtColor"
+                id="shirt-color-input"
+                value={form.shirtColor}
+                type="color"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.inputDiv}>
+              <label htmlFor="bg-color-input">Background Color</label>
+              <input
+                name="bgColor"
+                id="bg-color-input"
+                value={form.bgColor}
+                type="color"
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <button className={styles.avButton} type="submit">SUBMIT</button>
+        </form>
+      </div>
     </>
   );
 }
