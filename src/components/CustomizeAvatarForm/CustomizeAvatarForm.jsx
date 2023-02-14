@@ -29,31 +29,37 @@ const CustomizeAvatarForm = (props) => {
     setForm({ ...form, [target.name]: target.value })
   }
 
+  
+
+  
   const handleSubmit = (e) => {
     e.preventDefault()
+    try {
+      props.handleUpdateProfile(form, props.profile)
+    } catch (error) {
+      console.log(error)
+    }
   }
-
-
+  
   const avConfig = genConfig(form)
 
   return (
     <>
       <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
       <form onSubmit={handleSubmit}>
-        <label htmlFor="group-name-input">Skin Color</label>
+        <label htmlFor="skin-color-input">Skin Color</label>
         <input
           name="faceColor"
           id="face-color-input"
-          value={props.profile.photo.faceColor}
+          value={form.faceColor}
           type="color"
           onChange={handleChange}
         />
-       
         <label htmlFor="group-name-input">Hair Color</label>
         <input
           name="hairColor"
           id="hair-color-input"
-          value={props.profile.photo.hairColor}
+          value={form.hairColor}
           type="color"
           onChange={handleChange}
         />
@@ -62,7 +68,7 @@ const CustomizeAvatarForm = (props) => {
           name="hairStyle"
           id="hair-style-input"
           onChange={handleChange}
-          value={props.profile.photo.hairStyle}
+          value={form.hairStyle}
         >
           <option
             value='thick'
@@ -73,11 +79,6 @@ const CustomizeAvatarForm = (props) => {
             value='normal'
           >
             Mullet
-          </option>
-          <option
-            value='mohawk'
-          >
-            Mohawk
           </option>
           <option
             value='womanShort'
@@ -95,7 +96,7 @@ const CustomizeAvatarForm = (props) => {
           name="hatStyle"
           id="hat-style-input"
           onChange={handleChange}
-          value={props.profile.photo.hatStyle}
+          value={form.hatStyle}
         >
           <option
             value='none'
@@ -118,15 +119,15 @@ const CustomizeAvatarForm = (props) => {
           name="hatColor"
           id="hat-color-input"
           onChange={handleChange}
-          value={props.profile.photo.hatColor}
+          value={form.hatColor}
           type='color'
         />
-         <label htmlFor="eyebrow-input">Eyelashes</label>
+        <label htmlFor="eyebrow-input">Eyelashes</label>
         <select
           name="eyeBrowStyle"
           id="eyebrow-input"
           onChange={handleChange}
-          value={props.profile.photo.eyeBrowStyle}
+          value={form.eyeBrowStyle}
         >
           <option
             value='up'
@@ -144,17 +145,12 @@ const CustomizeAvatarForm = (props) => {
           name="eyeStyle"
           id="eye-style-input"
           onChange={handleChange}
-          value={props.profile.photo.eyeStyle}
+          value={form.eyeStyle}
         >
           <option
             value='smile'
           >
             Smiling
-          </option>
-          <option
-            value='round'
-          >
-            Round
           </option>
           <option
             value='oval'
@@ -167,7 +163,7 @@ const CustomizeAvatarForm = (props) => {
           name="glassesStyle"
           id="glasses-style-input"
           onChange={handleChange}
-          value={props.profile.photo.glassesStyle}
+          value={form.glassesStyle}
         >
           <option
             value='none'
@@ -190,7 +186,7 @@ const CustomizeAvatarForm = (props) => {
           name="mouthStyle"
           id="moyth-style-input"
           onChange={handleChange}
-          value={props.profile.photo.mouthStyle}
+          value={form.mouthStyle}
         >
           <option
             value='laugh'
@@ -213,7 +209,7 @@ const CustomizeAvatarForm = (props) => {
           name="noseStyle"
           id="nose-style-input"
           onChange={handleChange}
-          value={props.profile.photo.noseStyle}
+          value={form.noseStyle}
         >
           <option
             value='short'
@@ -236,7 +232,7 @@ const CustomizeAvatarForm = (props) => {
           name="shirtStyle"
           id="hat-style-input"
           onChange={handleChange}
-          value={props.profile.photo.shirtStyle}
+          value={form.shirtStyle}
         >
           <option
             value='hoody'
@@ -258,7 +254,7 @@ const CustomizeAvatarForm = (props) => {
         <input
           name="shirtColor"
           id="shirt-color-input"
-          value={props.profile.photo.shirtColor}
+          value={form.shirtColor}
           type="color"
           onChange={handleChange}
         />
@@ -266,7 +262,7 @@ const CustomizeAvatarForm = (props) => {
         <input
           name="bgColor"
           id="bg-color-input"
-          value={props.profile.photo.bgColor}
+          value={form.bgColor}
           type="color"
           onChange={handleChange}
         />

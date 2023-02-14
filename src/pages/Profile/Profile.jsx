@@ -5,6 +5,7 @@ import * as profileService from '../../services/profileService'
 import Bookshelf from '../../components/Bookshelf/Bookshelf'
 import Avatar, { genConfig } from 'react-nice-avatar'
 import CustomizeAvatarForm from '../../components/CustomizeAvatarForm/CustomizeAvatarForm'
+import { Link } from 'react-router-dom'
 
 
 const Profile = ({ user }) => {
@@ -24,6 +25,11 @@ const Profile = ({ user }) => {
 
   console.log(profile?.photo)
 
+  const handleUpdateProfile = async (formData) => {
+    const updatedProfile = await profileService.updateAvatar(formData, profile)
+    setProfile(updatedProfile)
+  }
+
   const avConfig = profile?.photo
 
   if (!profile) return "Loading..."
@@ -36,6 +42,9 @@ const Profile = ({ user }) => {
             <>
               <p>My Profile</p>
               <Avatar style={{ width: '8rem', height: '8rem' }} {...avConfig} />
+              <Link to='/edit-avatar' className={styles.avatarLink}>
+              <button>Edit Avatar</button>
+              </Link>
 
               <div className={styles.bookshelfDiv}>
                 <h4>My Bookshelf</h4>
@@ -62,7 +71,7 @@ const Profile = ({ user }) => {
           }
 
         </div>
-        <CustomizeAvatarForm profile={profile}/>
+        <CustomizeAvatarForm profile={profile} handleUpdateProfile={handleUpdateProfile}/>
       </main>
     </>
   );

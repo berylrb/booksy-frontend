@@ -46,6 +46,22 @@ const addBook = async (profileId, book) => {
   return res.json()
 }
 
+const updateAvatar = async (formData, profile) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profile._id}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
-export { getAllProfiles, addPhoto, addBook, show }
+
+export { getAllProfiles, addPhoto, addBook, show, updateAvatar }

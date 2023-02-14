@@ -18,6 +18,8 @@ import EditGroup from './pages/EditGroup/EditGroup'
 import BookSearch from './pages/BookSearch/BookSearch'
 import Hamburger from './components/Hamburger/Hamburger'
 import Subject from './pages/Subject/Subject'
+import CustomizeAvatarForm from './components/CustomizeAvatarForm/CustomizeAvatarForm'
+
 
 // components
 import NavBar from './components/NavBar/NavBar'
