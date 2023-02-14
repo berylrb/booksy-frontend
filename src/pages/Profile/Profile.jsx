@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import * as profileService from '../../services/profileService'
 import Bookshelf from '../../components/Bookshelf/Bookshelf'
 import Avatar, { genConfig } from 'react-nice-avatar'
+import CustomizeAvatarForm from '../../components/CustomizeAvatarForm/CustomizeAvatarForm'
 
 
 const Profile = ({ user }) => {
@@ -61,6 +62,7 @@ const Profile = ({ user }) => {
           }
 
         </div>
+        <CustomizeAvatarForm profile={profile}/>
       </main>
     </>
   );

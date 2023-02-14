@@ -19,7 +19,8 @@ const SignupForm = props => {
     mouthStyle: '',
     shirtStyle: '',
     shirtColor: '',
-    bgColor: '#EB0F04',
+    bgColor: '',
+    noseStyle: '',
     isGradient: false
   })
   
